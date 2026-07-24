@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Moving Morphism</title>
+    <style>
+        /* ── reset ── */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #0d0d1a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: system-ui, sans-serif;
+            overflow: hidden;
+        }
+
+        /* ── main canvas ── */
+        .morphism {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            background:
+                radial-gradient(circle at 20% 30%, rgba(255, 120, 200, 0.25), transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(80, 200, 255, 0.20), transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(255, 220, 80, 0.15), transparent 45%),
+                radial-gradient(circle at 70% 20%, rgba(180, 100, 255, 0.20), transparent 45%),
+                #0d0d1a;
+            background-blend-mode: normal, normal, normal, normal;
+            animation: breathe 18s ease-in-out infinite alternate;
+        }
+
+        /* ── blobs ── */
+        .blob {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.6;
+            will-change: transform, border-radius, background;
+            animation: morph 20s ease-in-out infinite alternate;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .blob--1 {
+            width: 600px;
+            height: 600px;
+            top: -10%;
+            left: -10%;
+            background: radial-gradient(circle, #ff6b9d, #c084fc);
+            animation-duration: 22s;
+            animation-delay: 0s;
+        }
+
+        .blob--2 {
+            width: 500px;
+            height: 500px;
+            bottom: -10%;
+            right: -10%;
+            background: radial-gradient(circle, #60a5fa, #a78bfa);
+            animation-duration: 26s;
+            animation-delay: -3s;
+        }
+
+        .blob--3 {
+            width: 450px;
+            height: 450px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(circle, #f472b6, #fb923c);
+            animation-duration: 24s;
+            animation-delay: -6s;
+            opacity: 0.4;
+        }
+
+        .blob--4 {
+            width: 350px;
+            height: 350px;
+            top: 10%;
+            right: 5%;
+            background: radial-gradient(circle, #34d399, #22d3ee);
+            animation-duration: 28s;
+            animation-delay: -9s;
+            opacity: 0.35;
+        }
+
+        .blob--5 {
+            width: 400px;
+            height: 400px;
+            bottom: 5%;
+            left: 5%;
+            background: radial-gradient(circle, #fbbf24, #f59e0b);
+            animation-duration: 20s;
+            animation-delay: -12s;
+            opacity: 0.3;
+        }
+
+        /* ── keyframes ── */
+
+        @keyframes breathe {
+            0% {
+                background:
+                    radial-gradient(circle at 20% 30%, rgba(255, 120, 200, 0.25), transparent 50%),
+                    radial-gradient(circle at 80% 70%, rgba(80, 200, 255, 0.20), transparent 50%),
+                    radial-gradient(circle at 40% 80%, rgba(255, 220, 80, 0.15), transparent 45%),
+                    radial-gradient(circle at 70% 20%, rgba(180, 100, 255, 0.20), transparent 45%),
+                    #0d0d1a;
+            }
+            25% {
+                background:
+                    radial-gradient(circle at 70% 20%, rgba(255, 120, 200, 0.25), transparent 50%),
+                    radial-gradient(circle at 20% 70%, rgba(80, 200, 255, 0.20), transparent 50%),
+                    radial-gradient(circle at 80% 40%, rgba(255, 220, 80, 0.15), transparent 45%),
+                    radial-gradient(circle at 30% 80%, rgba(180, 100, 255, 0.20), transparent 45%),
+                    #0d0d1a;
+            }
+            50% {
+                background:
+                    radial-gradient(circle at 50% 80%, rgba(255, 120, 200, 0.25), transparent 50%),
+                    radial-gradient(circle at 30% 20%, rgba(80, 200, 255, 0.20), transparent 50%),
+                    radial-gradient(circle at 70% 60%, rgba(255, 220, 80, 0.15), transparent 45%),
+                    radial-gradient(circle at 60% 40%, rgba(180, 100, 255, 0.20), transparent 45%),
+                    #0d0d1a;
+            }
+            75% {
+                background:
+                    radial-gradient(circle at 80% 50%, rgba(255, 120, 200, 0.25), transparent 50%),
+                    radial-gradient(circle at 60% 80%, rgba(80, 200, 255, 0.20), transparent 50%),
+                    radial-gradient(circle at 20% 20%, rgba(255, 220, 80, 0.15), transparent 45%),
+                    radial-gradient(circle at 40% 60%, rgba(180, 100, 255, 0.20), transparent 45%),
+                    #0d0d1a;
+            }
+            100% {
+                background:
+                    radial-gradient(circle at 10% 70%, rgba(255, 120, 200, 0.25), transparent 50%),
+                    radial-gradient(circle at 90% 30%, rgba(80, 200, 255, 0.20), transparent 50%),
+                    radial-gradient(circle at 50% 10%, rgba(255, 220, 80, 0.15), transparent 45%),
+                    radial-gradient(circle at 80% 90%, rgba(180, 100, 255, 0.20), transparent 45%),
+                    #0d0d1a;
+            }
+        }
+
+        @keyframes morph {
+            0% {
+                border-radius: 60% 40% 50% 50% / 40% 50% 60% 50%;
+                transform: translate(0, 0) scale(1) rotate(0deg);
+            }
+            20% {
+                border-radius: 40% 60% 30% 70% / 60% 40% 70% 30%;
+                transform: translate(30px, -20px) scale(1.05) rotate(5deg);
+            }
+            40% {
+                border-radius: 70% 30% 60% 40% / 30% 60% 40% 70%;
+                transform: translate(-20px, 40px) scale(0.95) rotate(-4deg);
+            }
+            60% {
+                border-radius: 30% 70% 40% 60% / 70% 30% 60% 40%;
+                transform: translate(40px, 20px) scale(1.08) rotate(8deg);
+            }
+            80% {
+                border-radius: 50% 50% 70% 30% / 50% 60% 40% 50%;
+                transform: translate(-30px, -30px) scale(0.92) rotate(-6deg);
+            }
+            100% {
+                border-radius: 60% 40% 50% 50% / 40% 50% 60% 50%;
+                transform: translate(0, 0) scale(1) rotate(0deg);
+            }
+        }
+
+        /* ── subtle overlay / vignette ── */
+        .vignette {
+            position: fixed;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+            background: radial-gradient(ellipse at center, transparent 50%, rgba(0, 0, 0, 0.35) 100%);
+        }
+
+        /* ── content (optional, keeps it minimal) ── */
+        .content {
+            position: relative;
+            z-index: 2;
+            color: rgba(255, 255, 255, 0.08);
+            font-size: 2rem;
+            font-weight: 300;
+            letter-spacing: 0.15em;
+            text-align: center;
+            user-select: none;
+            pointer-events: none;
+            text-shadow: 0 0 60px rgba(255, 255, 255, 0.02);
+        }
+
+        .content span {
+            display: block;
+            font-size: 0.75rem;
+            letter-spacing: 0.4em;
+            margin-top: 0.5rem;
+            opacity: 0.3;
+            font-weight: 200;
+        }
+
+        /* ── responsive tweaks ── */
+        @media (max-width: 768px) {
+            .blob--1 {
+                width: 350px;
+                height: 350px;
+            }
+            .blob--2 {
+                width: 300px;
+                height: 300px;
+            }
+            .blob--3 {
+                width: 280px;
+                height: 280px;
+            }
+            .blob--4 {
+                width: 220px;
+                height: 220px;
+            }
+            .blob--5 {
+                width: 250px;
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Blobs -->
+    <div class="blob blob--1"></div>
+    <div class="blob blob--2"></div>
+    <div class="blob blob--3"></div>
+    <div class="blob blob--4"></div>
+    <div class="blob blob--5"></div>
+
+    <!-- Background overlay (moves with keyframes) -->
+    <div class="morphism"></div>
+
+    <!-- Vignette -->
+    <div class="vignette"></div>
+
+    <!-- Minimal content -->
+    <div class="content">
+        ∞
+        <span>morphism</span>
+    </div>
+
+</body>
+</html>

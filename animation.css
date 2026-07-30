@@ -1,0 +1,527 @@
+/* ==========================================================================
+   ANIMATION CSS FRAMEWORK v1.0
+   A comprehensive set of fast, clean animations to complement the dark theme.
+   Includes: fade, push, wipe, morph, cube, and additional utilities.
+   ========================================================================== */
+
+/* ==========================================================================
+   USAGE GUIDE
+   ========================================================================== 
+   • Apply animation classes directly to elements: 
+       <div class="fade-in-up">...</div>
+   • Use direction variants: .fade-in-left, .push-out-right, .wipe-in-down, etc.
+   • Combine with timing utilities: .duration-fast, .duration-slow, .delay-1, etc.
+   • For cube rotations, wrap the element in a 3D container with perspective.
+   • All animations are optimized for performance and accessibility.
+   ========================================================================== */
+
+/* ==========================================================================
+   1. ROOT VARIABLES (for animation tuning)
+   ========================================================================== */
+:root {
+    --anim-duration: 0.5s;
+    --anim-duration-fast: 0.25s;
+    --anim-duration-slow: 0.8s;
+    --anim-ease: cubic-bezier(0.4, 0, 0.2, 1);
+    --anim-ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --anim-ease-in: cubic-bezier(0.4, 0, 1, 1);
+    --anim-ease-out: cubic-bezier(0, 0, 0.2, 1);
+    --anim-distance: 30px;
+}
+
+/* ==========================================================================
+   2. BASE ANIMATION CLASS (apply to elements that should animate on load)
+   ========================================================================== */
+.animate {
+    animation-duration: var(--anim-duration);
+    animation-fill-mode: both;
+    animation-timing-function: var(--anim-ease);
+}
+
+/* ==========================================================================
+   3. FADE ANIMATIONS
+   ========================================================================== */
+
+/* Fade In */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+.fade-in {
+    animation-name: fadeIn;
+    animation-duration: var(--anim-duration-fast);
+}
+
+/* Fade Out */
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to   { opacity: 0; }
+}
+.fade-out {
+    animation-name: fadeOut;
+    animation-duration: var(--anim-duration-fast);
+}
+
+/* Fade In with Direction */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(var(--anim-distance)); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+.fade-in-up {
+    animation-name: fadeInUp;
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(calc(-1 * var(--anim-distance))); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+.fade-in-down {
+    animation-name: fadeInDown;
+}
+
+@keyframes fadeInLeft {
+    from { opacity: 0; transform: translateX(calc(-1 * var(--anim-distance))); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+.fade-in-left {
+    animation-name: fadeInLeft;
+}
+
+@keyframes fadeInRight {
+    from { opacity: 0; transform: translateX(var(--anim-distance)); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+.fade-in-right {
+    animation-name: fadeInRight;
+}
+
+/* Fade Out with Direction */
+@keyframes fadeOutUp {
+    from { opacity: 1; transform: translateY(0); }
+    to   { opacity: 0; transform: translateY(calc(-1 * var(--anim-distance))); }
+}
+.fade-out-up {
+    animation-name: fadeOutUp;
+}
+
+@keyframes fadeOutDown {
+    from { opacity: 1; transform: translateY(0); }
+    to   { opacity: 0; transform: translateY(var(--anim-distance)); }
+}
+.fade-out-down {
+    animation-name: fadeOutDown;
+}
+
+@keyframes fadeOutLeft {
+    from { opacity: 1; transform: translateX(0); }
+    to   { opacity: 0; transform: translateX(calc(-1 * var(--anim-distance))); }
+}
+.fade-out-left {
+    animation-name: fadeOutLeft;
+}
+
+@keyframes fadeOutRight {
+    from { opacity: 1; transform: translateX(0); }
+    to   { opacity: 0; transform: translateX(var(--anim-distance)); }
+}
+.fade-out-right {
+    animation-name: fadeOutRight;
+}
+
+/* ==========================================================================
+   4. PUSH ANIMATIONS (element moves in from a direction with a "push" feel)
+   ========================================================================== */
+@keyframes pushInUp {
+    from { transform: translateY(calc(-1 * var(--anim-distance))); opacity: 0; }
+    to   { transform: translateY(0); opacity: 1; }
+}
+.push-in-up {
+    animation-name: pushInUp;
+    animation-timing-function: var(--anim-ease-out);
+}
+
+@keyframes pushInDown {
+    from { transform: translateY(var(--anim-distance)); opacity: 0; }
+    to   { transform: translateY(0); opacity: 1; }
+}
+.push-in-down {
+    animation-name: pushInDown;
+    animation-timing-function: var(--anim-ease-out);
+}
+
+@keyframes pushInLeft {
+    from { transform: translateX(calc(-1 * var(--anim-distance))); opacity: 0; }
+    to   { transform: translateX(0); opacity: 1; }
+}
+.push-in-left {
+    animation-name: pushInLeft;
+    animation-timing-function: var(--anim-ease-out);
+}
+
+@keyframes pushInRight {
+    from { transform: translateX(var(--anim-distance)); opacity: 0; }
+    to   { transform: translateX(0); opacity: 1; }
+}
+.push-in-right {
+    animation-name: pushInRight;
+    animation-timing-function: var(--anim-ease-out);
+}
+
+/* Push Out (exit) */
+@keyframes pushOutUp {
+    from { transform: translateY(0); opacity: 1; }
+    to   { transform: translateY(calc(-1 * var(--anim-distance))); opacity: 0; }
+}
+.push-out-up {
+    animation-name: pushOutUp;
+    animation-timing-function: var(--anim-ease-in);
+}
+
+@keyframes pushOutDown {
+    from { transform: translateY(0); opacity: 1; }
+    to   { transform: translateY(var(--anim-distance)); opacity: 0; }
+}
+.push-out-down {
+    animation-name: pushOutDown;
+    animation-timing-function: var(--anim-ease-in);
+}
+
+@keyframes pushOutLeft {
+    from { transform: translateX(0); opacity: 1; }
+    to   { transform: translateX(calc(-1 * var(--anim-distance))); opacity: 0; }
+}
+.push-out-left {
+    animation-name: pushOutLeft;
+    animation-timing-function: var(--anim-ease-in);
+}
+
+@keyframes pushOutRight {
+    from { transform: translateX(0); opacity: 1; }
+    to   { transform: translateX(var(--anim-distance)); opacity: 0; }
+}
+.push-out-right {
+    animation-name: pushOutRight;
+    animation-timing-function: var(--anim-ease-in);
+}
+
+/* ==========================================================================
+   5. WIPE ANIMATIONS (clip‑path based wipe‑ins)
+   ========================================================================== */
+@keyframes wipeInUp {
+    from { clip-path: inset(100% 0 0 0); }
+    to   { clip-path: inset(0 0 0 0); }
+}
+.wipe-in-up {
+    animation-name: wipeInUp;
+    animation-timing-function: var(--anim-ease-out);
+}
+
+@keyframes wipeInDown {
+    from { clip-path: inset(0 0 100% 0); }
+    to   { clip-path: inset(0 0 0 0); }
+}
+.wipe-in-down {
+    animation-name: wipeInDown;
+    animation-timing-function: var(--anim-ease-out);
+}
+
+@keyframes wipeInLeft {
+    from { clip-path: inset(0 100% 0 0); }
+    to   { clip-path: inset(0 0 0 0); }
+}
+.wipe-in-left {
+    animation-name: wipeInLeft;
+    animation-timing-function: var(--anim-ease-out);
+}
+
+@keyframes wipeInRight {
+    from { clip-path: inset(0 0 0 100%); }
+    to   { clip-path: inset(0 0 0 0); }
+}
+.wipe-in-right {
+    animation-name: wipeInRight;
+    animation-timing-function: var(--anim-ease-out);
+}
+
+/* Wipe Out (reverse) */
+@keyframes wipeOutUp {
+    from { clip-path: inset(0 0 0 0); }
+    to   { clip-path: inset(100% 0 0 0); }
+}
+.wipe-out-up {
+    animation-name: wipeOutUp;
+    animation-timing-function: var(--anim-ease-in);
+}
+
+@keyframes wipeOutDown {
+    from { clip-path: inset(0 0 0 0); }
+    to   { clip-path: inset(0 0 100% 0); }
+}
+.wipe-out-down {
+    animation-name: wipeOutDown;
+    animation-timing-function: var(--anim-ease-in);
+}
+
+@keyframes wipeOutLeft {
+    from { clip-path: inset(0 0 0 0); }
+    to   { clip-path: inset(0 100% 0 0); }
+}
+.wipe-out-left {
+    animation-name: wipeOutLeft;
+    animation-timing-function: var(--anim-ease-in);
+}
+
+@keyframes wipeOutRight {
+    from { clip-path: inset(0 0 0 0); }
+    to   { clip-path: inset(0 0 0 100%); }
+}
+.wipe-out-right {
+    animation-name: wipeOutRight;
+    animation-timing-function: var(--anim-ease-in);
+}
+
+/* ==========================================================================
+   6. MORPH ANIMATIONS (shape transformations)
+   ========================================================================== */
+@keyframes morphToCircle {
+    from { border-radius: 0; transform: scale(1); }
+    to   { border-radius: 50%; transform: scale(1.1); }
+}
+.morph-circle {
+    animation-name: morphToCircle;
+    animation-timing-function: var(--anim-ease-bounce);
+}
+
+@keyframes morphToSquare {
+    from { border-radius: 50%; transform: scale(1); }
+    to   { border-radius: 0; transform: scale(1.1); }
+}
+.morph-square {
+    animation-name: morphToSquare;
+    animation-timing-function: var(--anim-ease-bounce);
+}
+
+@keyframes morphScale {
+    0%   { transform: scale(0.8); opacity: 0.5; }
+    50%  { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+}
+.morph-scale {
+    animation-name: morphScale;
+    animation-timing-function: var(--anim-ease-bounce);
+}
+
+@keyframes morphRotate {
+    from { transform: rotate(0deg) scale(0.8); opacity: 0; }
+    to   { transform: rotate(360deg) scale(1); opacity: 1; }
+}
+.morph-rotate {
+    animation-name: morphRotate;
+    animation-timing-function: var(--anim-ease);
+}
+
+/* ==========================================================================
+   7. CUBE ROTATION (3D cube spin)
+   ========================================================================== */
+/* NOTE: For best results, apply to a container with perspective.
+   Example: 
+   <div style="perspective: 800px;">
+       <div class="cube-rotate">...</div>
+   </div>
+*/
+@keyframes cubeRotateX {
+    from { transform: rotateX(0deg); }
+    to   { transform: rotateX(360deg); }
+}
+.cube-rotate-x {
+    animation-name: cubeRotateX;
+    animation-timing-function: linear;
+    transform-style: preserve-3d;
+}
+
+@keyframes cubeRotateY {
+    from { transform: rotateY(0deg); }
+    to   { transform: rotateY(360deg); }
+}
+.cube-rotate-y {
+    animation-name: cubeRotateY;
+    animation-timing-function: linear;
+    transform-style: preserve-3d;
+}
+
+@keyframes cubeRotateZ {
+    from { transform: rotateZ(0deg); }
+    to   { transform: rotateZ(360deg); }
+}
+.cube-rotate-z {
+    animation-name: cubeRotateZ;
+    animation-timing-function: linear;
+    transform-style: preserve-3d;
+}
+
+@keyframes cubeRotate3D {
+    from { transform: rotate3d(1, 1, 1, 0deg); }
+    to   { transform: rotate3d(1, 1, 1, 360deg); }
+}
+.cube-rotate-3d {
+    animation-name: cubeRotate3D;
+    animation-timing-function: linear;
+    transform-style: preserve-3d;
+}
+
+/* ==========================================================================
+   8. ADDITIONAL COMMON ANIMATIONS
+   ========================================================================== */
+
+/* Bounce */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    30%      { transform: translateY(-20px); }
+    60%      { transform: translateY(-8px); }
+    80%      { transform: translateY(-4px); }
+}
+.bounce {
+    animation-name: bounce;
+    animation-timing-function: var(--anim-ease-bounce);
+}
+
+/* Pulse */
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50%      { transform: scale(1.05); }
+}
+.pulse {
+    animation-name: pulse;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+
+/* Shake */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%      { transform: translateX(-10px); }
+    40%      { transform: translateX(10px); }
+    60%      { transform: translateX(-6px); }
+    80%      { transform: translateX(6px); }
+}
+.shake {
+    animation-name: shake;
+    animation-timing-function: var(--anim-ease);
+}
+
+/* Spin */
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+.spin {
+    animation-name: spin;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+/* Flip */
+@keyframes flip {
+    from { transform: rotateY(0deg); }
+    to   { transform: rotateY(180deg); }
+}
+.flip {
+    animation-name: flip;
+    animation-timing-function: var(--anim-ease);
+    backface-visibility: visible;
+}
+
+/* ==========================================================================
+   9. UTILITY CLASSES (timing, delay, iteration, etc.)
+   ========================================================================== */
+
+/* Duration */
+.duration-fast {
+    animation-duration: var(--anim-duration-fast) !important;
+}
+.duration-normal {
+    animation-duration: var(--anim-duration) !important;
+}
+.duration-slow {
+    animation-duration: var(--anim-duration-slow) !important;
+}
+
+/* Delay */
+.delay-none {
+    animation-delay: 0s !important;
+}
+.delay-1 {
+    animation-delay: 0.1s !important;
+}
+.delay-2 {
+    animation-delay: 0.2s !important;
+}
+.delay-3 {
+    animation-delay: 0.3s !important;
+}
+.delay-4 {
+    animation-delay: 0.4s !important;
+}
+.delay-5 {
+    animation-delay: 0.5s !important;
+}
+.delay-6 {
+    animation-delay: 0.6s !important;
+}
+.delay-7 {
+    animation-delay: 0.7s !important;
+}
+.delay-8 {
+    animation-delay: 0.8s !important;
+}
+.delay-9 {
+    animation-delay: 0.9s !important;
+}
+.delay-10 {
+    animation-delay: 1s !important;
+}
+
+/* Iteration Count */
+.iteration-1 {
+    animation-iteration-count: 1 !important;
+}
+.iteration-infinite {
+    animation-iteration-count: infinite !important;
+}
+.iteration-2 {
+    animation-iteration-count: 2 !important;
+}
+.iteration-3 {
+    animation-iteration-count: 3 !important;
+}
+
+/* Fill Mode */
+.fill-forwards {
+    animation-fill-mode: forwards !important;
+}
+.fill-backwards {
+    animation-fill-mode: backwards !important;
+}
+.fill-both {
+    animation-fill-mode: both !important;
+}
+
+/* Play State (pause/resume on hover) */
+.pause-on-hover:hover {
+    animation-play-state: paused !important;
+}
+
+/* ==========================================================================
+   10. ACCESSIBILITY: REDUCED MOTION
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ==========================================================================
+   END OF ANIMATION CSS FRAMEWORK
+   ========================================================================== */

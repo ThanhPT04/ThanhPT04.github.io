@@ -1,487 +1,106 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Phương Thanh · Bilingual MC</title>
+    <title>MC Phương Thanh</title>
 
     <!-- ===== FONTS & ICONS ===== -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-    <!-- Google Fonts: Calistoga, Saira, Great Vibes (script) -->
     <link href="https://fonts.googleapis.com/css2?family=Calistoga&family=Saira:wght@400;600;700&family=Great+Vibes&family=Inter:opsz@14..32&display=swap" rel="stylesheet" />
 
-    <!-- ===== CSS FRAMEWORKS (provided) ===== -->
+    <!-- ===== CSS FRAMEWORKS ===== -->
     <link rel="stylesheet" href="css.css" />
     <link rel="stylesheet" href="animation.css" />
 
     <style>
-        /* ============================================================
-               EXTRA CUSTOM STYLES – MC PORTFOLIO (updated hero)
-               ============================================================ */
-
-        :root {
-            --hero-gradient: linear-gradient(145deg, #0f172a 0%, #1a2a4a 100%);
-            --card-glow: 0 0 40px rgba(56, 189, 248, 0.06);
-            --glass-bg: rgba(30, 41, 59, 0.55);
-            --glass-border: rgba(71, 85, 105, 0.3);
-            --serif-font: 'Georgia', 'Times New Roman', serif;
-            /* fallback for DNP Shuei ShogoMincho Std */
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
-            background: var(--bg-main);
-            color: var(--text-main);
-            padding: 0;
-            overflow-x: hidden;
-        }
-
-        /* ----- scrollbar (override) ----- */
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: var(--bg-surface);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: var(--primary);
-            border-radius: var(--radius-full);
-        }
-
-        /* ----- container tweaks ----- */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* ----- section spacing ----- */
-        section {
-            padding: 80px 0 60px;
-            position: relative;
-        }
-
-        /* ----- headers using serif (similar to DNP Shuei ShogoMincho Std) ----- */
-        .section-title,
-        .hero-title,
-        .header-serif {
-            font-family: var(--serif-font);
-            font-weight: 700;
-            letter-spacing: 0.02em;
-        }
-
-        .section-title {
-            font-size: 2.4rem;
-            margin-bottom: 0.3rem;
-            background: linear-gradient(135deg, #ffffff 40%, var(--primary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            display: inline-block;
-        }
-
-        .section-subtitle {
-            color: var(--text-muted);
-            font-size: 1.05rem;
-            margin-bottom: 2.5rem;
-            border-left: 3px solid var(--primary);
-            padding-left: 16px;
-            font-family: 'Saira', sans-serif;
-        }
-
-        /* ============================================================
-               NAVBAR
-               ============================================================ */
-        .navbar-custom {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: var(--z-fixed);
-            background: rgba(15, 23, 42, 0.82);
-            backdrop-filter: blur(16px) saturate(1.2);
-            border-bottom: 1px solid var(--glass-border);
-            padding: 12px 0;
-            transition: var(--transition);
-        }
-
-        .navbar-custom .container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .navbar-brand {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: #fff;
-            letter-spacing: -0.02em;
-            font-family: 'Saira', sans-serif;
-        }
-        .navbar-brand span {
-            color: var(--primary);
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 6px;
-            flex-wrap: wrap;
-        }
-        .nav-links a {
-            display: block;
-            padding: 8px 16px;
-            border-radius: var(--radius);
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: var(--transition);
-            text-decoration: none;
-            font-family: 'Saira', sans-serif;
-        }
-        .nav-links a:hover,
-        .nav-links a.active {
-            background: var(--primary-light);
-            color: var(--primary);
-            text-decoration: none;
-        }
-
-        /* ============================================================
-               HERO (UPDATED per guide)
-               ============================================================ */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-            padding-top: 80px;
-            background: #0f172a;
-            /* fallback */
-        }
-
-        /* background image */
-        .hero::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image: url('Image_for_background_1st.jpg');
-            background-size: cover;
-            background-position: center;
-            opacity: 0.25;
-            filter: brightness(0.6) saturate(0.8);
-            z-index: 0;
-        }
-
-        /* pink gradient fade-up (top side) */
-        .hero .pink-fade {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 60%;
-            background: linear-gradient(180deg, rgba(255, 182, 193, 0.25) 0%, transparent 100%);
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 48px;
-            align-items: center;
-            width: 100%;
-        }
-
-        /* left side: signature + name + info buttons */
-        .hero-left {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .hero-signature {
-            font-family: 'Great Vibes', cursive;
-            font-size: 4.5rem;
-            line-height: 1;
-            color: rgba(255, 255, 255, 0.15);
-            letter-spacing: 0.04em;
-            margin-bottom: -20px;
-            user-select: none;
-        }
-
-        .hero-name {
-            font-family: 'Calistoga', cursive;
-            font-size: 4rem;
-            line-height: 1.1;
-            background: linear-gradient(135deg, #fff 30%, var(--primary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-top: -10px;
-        }
-
-        /* info buttons */
-        .info-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 8px;
-        }
-
-        .info-btn {
-            display: inline-flex;
-            align-items: center;
-            background: var(--glass-bg);
-            backdrop-filter: blur(4px);
-            border: 1px solid var(--glass-border);
-            border-radius: 9999px;
-            padding: 8px 20px 8px 16px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: var(--text-secondary);
-            transition: var(--transition-bounce);
-            cursor: pointer;
-            gap: 8px;
-            font-family: 'Saira', sans-serif;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .info-btn i {
-            color: var(--primary);
-            font-size: 1rem;
-            width: 20px;
-            text-align: center;
-        }
-
-        .info-btn .btn-label {
-            display: inline-block;
-            transition: var(--transition);
-        }
-
-        .info-btn .btn-value {
-            display: inline-block;
-            max-width: 0;
-            overflow: hidden;
-            white-space: nowrap;
-            transition: max-width 0.3s ease, opacity 0.3s ease;
-            opacity: 0;
-            color: #fff;
-            font-weight: 600;
-        }
-
-        .info-btn:hover .btn-value {
-            max-width: 200px;
-            opacity: 1;
-        }
-
-        .info-btn:hover {
-            background: var(--bg-surface);
-            border-color: var(--primary);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 20px rgba(56, 189, 248, 0.15);
-        }
-
-        .info-btn.copy-btn:hover .btn-value {
-            /* copy button shows value on hover */
-        }
-
-        /* right side: personal info list */
-        .hero-right {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            padding: 24px 28px;
-            background: var(--glass-bg);
-            backdrop-filter: blur(8px);
-            border: 1px solid var(--glass-border);
-            border-radius: var(--radius-xl);
-            box-shadow: var(--card-glow);
-        }
-
-        .info-line {
-            display: flex;
-            justify-content: space-between;
-            padding: 6px 0;
-            border-bottom: 1px solid rgba(71, 85, 105, 0.15);
-            font-size: 1rem;
-        }
-        .info-line:last-child {
-            border-bottom: none;
-        }
-
-        .info-line .label {
-            color: var(--text-muted);
-            font-weight: 600;
-            text-transform: lowercase;
-        }
-        .info-line .label::first-letter {
-            text-transform: uppercase;
-        }
-
-        .info-line .value {
-            color: #fff;
-            font-weight: 500;
-        }
-
-        /* consistent font for all info lines */
-        .info-line .label,
-        .info-line .value {
-            font-family: 'Saira', sans-serif;
-            font-weight: 500;
-        }        
-
-        /* small text for "information" header in Sulat Rizal – we use a similar script */
-        .info-header {
-            font-family: 'Great Vibes', cursive;
-            font-size: 1.6rem;
-            color: var(--primary);
-            text-align: right;
-            margin-bottom: 4px;
-            opacity: 0.7;
-            letter-spacing: 0.04em;
-        }
-
-        /* ============================================================
-               RESPONSIVE
-               ============================================================ */
-        @media (max-width: 992px) {
-            .hero-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            .hero-signature {
-                font-size: 3rem;
-                margin-bottom: -10px;
-            }
-            .hero-name {
-                font-size: 3rem;
-            }
-            .info-buttons {
-                justify-content: center;
-            }
-            .hero-right {
-                max-width: 500px;
-                margin: 0 auto;
-                width: 100%;
-            }
-            .info-header {
-                text-align: center;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .hero-signature {
-                font-size: 2.2rem;
-            }
-            .hero-name {
-                font-size: 2.2rem;
-            }
-            .info-btn {
-                font-size: 0.8rem;
-                padding: 6px 14px 6px 12px;
-            }
-            .info-btn .btn-value {
-                font-size: 0.8rem;
-            }
-            .hero-right {
-                padding: 16px;
-            }
-            .info-line {
-                font-size: 0.85rem;
-                flex-wrap: wrap;
-                gap: 2px;
-            }
-        }
-
-        /* ============================================================
-               REUSE EXISTING SECTIONS (About, Events, etc.)
-               we keep them as is, but ensure headers use serif
-               ============================================================ */
-        /* About, Events, Awards, Partners, Contact - keep existing styles */
-        /* But we override section-title to use serif already */
-
-        /* keep the scroll reveal and other scripts */
     </style>
 </head>
 
 <body>
 
     <!-- ============================================================
-    NAVBAR
+    NAVBAR – with language dropdown
     ============================================================ -->
     <nav class="navbar-custom" id="navbar">
         <div class="container">
             <a href="#" class="navbar-brand">
                 <i class="fas fa-microphone-alt" style="color:var(--primary);margin-right:8px;"></i>
-                Phương<span>Thanh</span>
+                Phương Thanh
             </a>
             <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#events">Events</a></li>
-                <li><a href="#awards">Awards</a></li>
-                <li><a href="#partners">Partners</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#about">Giới thiệu</a></li>
+                <li><a href="#content-creator">Content Creator</a></li>
+                <li><a href="#english-teacher">English Teacher</a></li>
+                <li><a href="#events">Sự kiện</a></li>
+                <li><a href="#awards">Thành tựu</a></li>
+                <li><a href="#partners">Đối tác</a></li>
+                <li><a href="#contact">Liên hệ</a></li>
             </ul>
+
+            <!-- NEW: language dropdown -->
+            <div class="lang-switch">
+                <div class="lang-dropdown">
+                    <button class="lang-dropdown-btn" id="langDropdownBtn" aria-label="Chọn ngôn ngữ">
+                        <span class="flag-icon" id="currentFlag">🇻🇳</span>
+                        <span id="currentLangLabel">VI</span>
+                        <i class="fas fa-chevron-down dropdown-arrow" id="dropdownArrow"></i>
+                    </button>
+
+                    <!-- overlay to close on outside click -->
+                    <div class="lang-dropdown-overlay" id="langOverlay"></div>
+
+                    <div class="lang-dropdown-menu" id="langDropdownMenu">
+                        <a href="index.html" class="active-lang" data-lang="vi">
+                            <span class="flag-icon">VN</span>
+                            <span class="lang-label">Tiếng Việt</span>
+                            <i class="fas fa-check check-icon"></i>
+                        </a>
+                        <a href="eindex.html" data-lang="en">
+                            <span class="flag-icon">EN</span>
+                            <span class="lang-label">English</span>
+                            <i class="fas fa-check check-icon"></i>
+                        </a>
+                        <a href="cindex.html" data-lang="zh">
+                            <span class="flag-icon">CN</span>
+                            <span class="lang-label">中文</span>
+                            <i class="fas fa-check check-icon"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </nav>
 
     <!-- ============================================================
-    HERO (UPDATED)
+    HERO (unchanged)
     ============================================================ -->
     <section class="hero" id="home">
-        <!-- pink fade-up gradient -->
         <div class="pink-fade"></div>
-
         <div class="container hero-content">
             <div class="hero-left">
-                <!-- big brittany signature "portfolio" -->
-                <div class="hero-signature">portfolio</div>
-                <!-- big "Phương Thanh" in Calistoga -->
+                <div class="hero-signature">Portfolio</div>
                 <div class="hero-name">Phương Thanh</div>
-
-                <!-- info buttons: phone, email, tiktok -->
                 <div class="info-buttons">
-                    <!-- phone -->
                     <button class="info-btn copy-btn" data-copy="0339468816" onclick="copyText('0339468816')">
                         <i class="fas fa-phone-alt"></i>
-                        <span class="btn-label">điện thoại</span>
+                        <span class="btn-label">Điện thoại</span>
                         <span class="btn-value">0339468816</span>
                     </button>
-                    <!-- email -->
-                    <button class="info-btn copy-btn" data-copy="phuongthanh.contact@gmail.com" onclick="copyText('phuongthanh.contact@gmail.com')">
+                    <button class="info-btn copy-btn" data-copy="contact.phuongthanh@gmail.com" onclick="copyText('contact.phuongthanh@gmail.com')">
                         <i class="fas fa-envelope"></i>
-                        <span class="btn-label">email</span>
-                        <span class="btn-value">phuongthanh.contact@gmail.com</span>
+                        <span class="btn-label">Email</span>
+                        <span class="btn-value">contact.phuongthanh@gmail.com</span>
                     </button>
-                    <!-- tiktok (open new tab) -->
                     <a href="https://www.tiktok.com/@thankful.mp4" target="_blank" class="info-btn" style="text-decoration:none;">
                         <i class="fab fa-tiktok"></i>
-                        <span class="btn-label">tiktok</span>
+                        <span class="btn-label">Tiktok</span>
                         <span class="btn-value">@thankful.mp4</span>
                     </a>
                 </div>
             </div>
-
             <div class="hero-right">
-                <!-- "information" in Sulat Rizal (we use Great Vibes as script) -->
-                <div class="info-header">information</div>
-
+                <div class="info-header">Thông tin</div>
                 <div class="info-line">
                     <span class="label">Họ tên</span>
                     <span class="value">Phương Thúy Thanh</span>
@@ -507,61 +126,53 @@
     </section>
 
     <!-- ============================================================
-    ABOUT (kept as before, but headers use serif via class)
+    1. ABOUT (unchanged)
     ============================================================ -->
     <section id="about">
         <div class="container">
             <div class="reveal">
-                <h2 class="section-title">About Me</h2>
-                <p class="section-subtitle">Passionate MC · Storyteller · Bridge Builder</p>
+                <h2 class="section-title">Giới thiệu</h2>
+                <p class="section-subtitle">MC/Host · Giáo viên tiếng Anh · Nhà sáng tạo nội dung</p>
             </div>
 
             <div class="about-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;">
                 <div class="about-desc reveal">
                     <p style="font-size:1.1rem;color:#fff;font-weight:500;margin-bottom:12px;">
                         <i class="fas fa-hand-peace" style="color:var(--primary);margin-right:8px;"></i>
-                        Xin chào! I'm Phương Thúy Thanh.
+                        Xin chào! Mình là Phương Thúy Thanh.
                     </p>
                     <p>
-                        A bilingual MC with a deep passion for connecting people through
-                        <strong>storytelling</strong> and <strong>authentic stage presence</strong>.
-                        With 4+ years of experience hosting events, talkshows, competitions,
-                        and television programs, I bring energy, professionalism, and a warm
-                        touch to every stage — whether in <strong>Vietnamese, English, or Chinese</strong>.
+                        Một MC song ngữ luôn mong muốn kết nối mọi người thông qua những <strong>câu chuyện truyền cảm hứng</strong> và <strong>phong thái dẫn dắt chân thành, gần gũi</strong>.
+                        Với hơn 4 năm kinh nghiệm dẫn dắt sự kiện, talkshow, cuộc thi và các chương trình truyền hình, tôi luôn mang đến nguồn năng lượng tích cực, sự chuyên nghiệp và cảm giác gần gũi trên sân khấu - dù là bằng <strong>tiếng Việt, tiếng Anh hay tiếng Trung</strong>.
                     </p>
                     <p style="margin-top:12px;">
-                        I believe that every event is a unique story waiting to be told,
-                        and my role is to make that story unforgettable.
+                        Tôi tin rằng mỗi sự kiện đều mang một câu chuyện riêng. Và tôi ở đây để cùng kể câu chuyện ấy theo cách chân thực, truyền cảm hứng và đáng nhớ nhất.
                     </p>
                 </div>
 
-                <div class="about-card" style="background:var(--glass-bg);backdrop-filter:blur(8px);border:1px solid var(--glass-border);border-radius:var(--radius-xl);padding:32px 36px;box-shadow:var(--card-glow);">
+                <div class="about-card glass-card reveal">
                     <div class="info-row" style="display:flex;padding:10px 0;border-bottom:1px solid rgba(71,85,105,0.25);">
-                        <span class="info-label" style="width:120px;flex-shrink:0;font-weight:600;color:var(--text-muted);font-size:0.9rem;"><i class="fas fa-user" style="margin-right:8px;color:var(--primary);"></i>Full name</span>
+                        <span class="info-label" style="width:120px;flex-shrink:0;font-weight:600;color:var(--text-muted);font-size:0.9rem;"><i class="fas fa-user" style="margin-right:8px;color:var(--primary);"></i>Họ và tên</span>
                         <span class="info-value" style="color:var(--text-main);font-weight:500;">Phương Thúy Thanh</span>
                     </div>
                     <div class="info-row" style="display:flex;padding:10px 0;border-bottom:1px solid rgba(71,85,105,0.25);">
-                        <span class="info-label" style="width:120px;flex-shrink:0;font-weight:600;color:var(--text-muted);font-size:0.9rem;"><i class="fas fa-map-pin" style="margin-right:8px;color:var(--primary);"></i>Address</span>
-                        <span class="info-value" style="color:var(--text-main);font-weight:500;">Cầu Giấy, Hà Nội</span>
-                    </div>
-                    <div class="info-row" style="display:flex;padding:10px 0;border-bottom:1px solid rgba(71,85,105,0.25);">
-                        <span class="info-label" style="width:120px;flex-shrink:0;font-weight:600;color:var(--text-muted);font-size:0.9rem;"><i class="fas fa-graduation-cap" style="margin-right:8px;color:var(--primary);"></i>Education</span>
+                        <span class="info-label" style="width:120px;flex-shrink:0;font-weight:600;color:var(--text-muted);font-size:0.9rem;"><i class="fas fa-graduation-cap" style="margin-right:8px;color:var(--primary);"></i>Học vấn</span>
                         <span class="info-value" style="color:var(--text-main);font-weight:500;">Học viện Báo chí và Tuyên truyền</span>
                     </div>
                     <div class="info-row" style="display:flex;padding:10px 0;border-bottom:1px solid rgba(71,85,105,0.25);">
-                        <span class="info-label" style="width:120px;flex-shrink:0;font-weight:600;color:var(--text-muted);font-size:0.9rem;"><i class="fas fa-briefcase" style="margin-right:8px;color:var(--primary);"></i>Experience</span>
-                        <span class="info-value" style="color:var(--text-main);font-weight:500;">4+ years</span>
+                        <span class="info-label" style="width:120px;flex-shrink:0;font-weight:600;color:var(--text-muted);font-size:0.9rem;"><i class="fas fa-briefcase" style="margin-right:8px;color:var(--primary);"></i>Kinh nghiệm</span>
+                        <span class="info-value" style="color:var(--text-main);font-weight:500;">4+ năm</span>
                     </div>
                     <div class="info-row" style="display:flex;padding:10px 0;border-bottom:1px solid rgba(71,85,105,0.25);">
-                        <span class="info-label" style="width:120px;flex-shrink:0;font-weight:600;color:var(--text-muted);font-size:0.9rem;"><i class="fas fa-ruler-vertical" style="margin-right:8px;color:var(--primary);"></i>Height</span>
+                        <span class="info-label" style="width:120px;flex-shrink:0;font-weight:600;color:var(--text-muted);font-size:0.9rem;"><i class="fas fa-ruler-vertical" style="margin-right:8px;color:var(--primary);"></i>Chiều cao</span>
                         <span class="info-value" style="color:var(--text-main);font-weight:500;">1m55</span>
                     </div>
                     <div class="info-row" style="display:flex;padding:10px 0;border-bottom:none;">
-                        <span class="info-label" style="width:120px;flex-shrink:0;font-weight:600;color:var(--text-muted);font-size:0.9rem;"><i class="fas fa-language" style="margin-right:8px;color:var(--primary);"></i>Languages</span>
+                        <span class="info-label" style="width:120px;flex-shrink:0;font-weight:600;color:var(--text-muted);font-size:0.9rem;"><i class="fas fa-language" style="margin-right:8px;color:var(--primary);"></i>Ngôn ngữ</span>
                         <span class="info-value" style="color:var(--text-main);font-weight:500;">
-                            <span class="lang-badge" style="display:inline-block;background:var(--primary-light);color:var(--primary);padding:2px 12px;border-radius:var(--radius-full);font-size:0.75rem;font-weight:600;margin-right:4px;">🇻🇳 Vietnamese</span>
-                            <span class="lang-badge" style="display:inline-block;background:var(--primary-light);color:var(--primary);padding:2px 12px;border-radius:var(--radius-full);font-size:0.75rem;font-weight:600;margin-right:4px;">🇬🇧 English</span>
-                            <span class="lang-badge" style="display:inline-block;background:var(--primary-light);color:var(--primary);padding:2px 12px;border-radius:var(--radius-full);font-size:0.75rem;font-weight:600;margin-right:4px;">🇨🇳 Chinese</span>
+                            <span class="lang-tag">🇻🇳 Tiếng Việt</span>
+                            <span class="lang-tag">🇬🇧 Tiếng Anh</span>
+                            <span class="lang-tag">🇨🇳 Tiếng Trung</span>
                         </span>
                     </div>
                 </div>
@@ -570,79 +181,188 @@
     </section>
 
     <!-- ============================================================
-    EVENTS (kept as before)
+    2. CONTENT CREATOR – NEW SECTION
+    ============================================================ -->
+    <section id="content-creator" style="background:var(--bg-surface);">
+        <div class="container">
+            <div class="reveal">
+                <h2 class="section-title">Content Creator</h2>
+                <p class="section-subtitle">Sáng tạo nội dung đa nền tảng – Kết nối cộng đồng</p>
+            </div>
+
+            <div class="creator-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:32px;">
+                <!-- left: description -->
+                <div class="creator-desc reveal">
+                    <p style="color:var(--text-secondary);font-size:1.05rem;line-height:1.7;">
+                        Bên cạnh vai trò MC, mình còn hoạt động tích cực với tư cách là
+                        <strong style="color:#fff;">nhà sáng tạo nội dung</strong> trên các nền tảng số.
+                        Mình yêu thích việc xây dựng những câu chuyện gần gũi, truyền cảm hứng học tập
+                        và khám phá ngôn ngữ thông qua các video, bài viết và livestream.
+                    </p>
+                    <p style="color:var(--text-secondary);font-size:1.05rem;line-height:1.7;margin-top:12px;">
+                        Các nội dung mình tập trung khai thác: <strong style="color:#fff;">học tiếng Anh</strong>,
+                        <strong style="color:#fff;">kỹ năng giao tiếp</strong> và <strong style="color:#fff;">những trải nghiệm đời sống</strong>
+                        – luôn mang đến giá trị thực và cảm xúc tích cực cho người xem.
+                    </p>
+                    <div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:10px;">
+                        <span class="badge-icon"><i class="fab fa-tiktok"></i> Tiktok 4.5K+</span>
+                        <span class="badge-icon"><i class="fas fa-video"></i> Video ngắn</span>
+                        <span class="badge-icon"><i class="fas fa-pen-fancy"></i> Viết lách</span>
+                        <span class="badge-icon"><i class="fas fa-bullhorn"></i> Livestream</span>
+                    </div>
+                </div>
+
+                <!-- right: collaborations (from Infor.docx) -->
+                <div class="creator-collab glass-card reveal">
+                    <h4 style="font-size:1.1rem;color:#fff;margin-bottom:16px;">
+                        <i class="fas fa-handshake" style="color:var(--primary);margin-right:10px;"></i>
+                        Hợp tác nội dung
+                    </h4>
+                    <div style="display:flex;flex-wrap:wrap;gap:12px;">
+                        <span class="partner-chip" style="background:var(--bg-surface);border:1px solid var(--border-color);padding:8px 20px;border-radius:var(--radius-full);font-weight:500;color:var(--text-secondary);font-size:0.9rem;transition:var(--transition);">Huyền học lab</span>
+                        <span class="partner-chip" style="background:var(--bg-surface);border:1px solid var(--border-color);padding:8px 20px;border-radius:var(--radius-full);font-weight:500;color:var(--text-secondary);font-size:0.9rem;transition:var(--transition);">CollaNote</span>
+                        <span class="partner-chip" style="background:var(--bg-surface);border:1px solid var(--border-color);padding:8px 20px;border-radius:var(--radius-full);font-weight:500;color:var(--text-secondary);font-size:0.9rem;transition:var(--transition);">EnglishWell</span>
+                    </div>
+                    <div style="margin-top:16px;">
+                        <span style="font-size:0.85rem;color:var(--text-muted);">
+                            <i class="fas fa-users" style="color:var(--primary);margin-right:6px;"></i>
+                            Cộng tác với các thương hiệu giáo dục &amp; nền tảng học tập
+                        </span>
+                    </div>
+                    <hr style="margin:16px 0;border-color:var(--border-color);opacity:0.3;" />
+                    <div style="display:flex;flex-wrap:wrap;gap:8px;">
+                        <span class="lang-tag" style="background:var(--success-light);color:var(--success);">Sáng tạo video</span>
+                        <span class="lang-tag" style="background:var(--success-light);color:var(--success);">Viết content</span>
+                        <span class="lang-tag" style="background:var(--success-light);color:var(--success);">Hợp tác thương hiệu</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    3. ENGLISH TEACHER – NEW SECTION
+    ============================================================ -->
+    <section id="english-teacher">
+        <div class="container">
+            <div class="reveal">
+                <h2 class="section-title">English Teacher</h2>
+                <p class="section-subtitle">Đồng hành cùng bạn chinh phục tiếng Anh</p>
+            </div>
+
+            <div class="teacher-grid" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;">
+                <!-- card 1: teaching style -->
+                <div class="glass-card reveal" style="text-align:center;">
+                    <div style="font-size:2.8rem;color:var(--primary);margin-bottom:12px;">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h4 style="color:#fff;font-size:1.1rem;margin-bottom:8px;">Phương pháp giao tiếp</h4>
+                    <p style="color:var(--text-secondary);font-size:0.95rem;line-height:1.6;">
+                        Tập trung vào <strong style="color:#fff;">phản xạ tự nhiên</strong> và
+                        <strong style="color:#fff;">tự tin giao tiếp</strong> trong mọi tình huống.
+                        Học tiếng Anh không chỉ là ngữ pháp – mà là cách bạn kết nối.
+                    </p>
+                </div>
+
+                <!-- card 2: qualifications -->
+                <div class="glass-card reveal" style="text-align:center;">
+                    <div style="font-size:2.8rem;color:var(--primary);margin-bottom:12px;">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h4 style="color:#fff;font-size:1.1rem;margin-bottom:8px;">Chứng chỉ &amp; Kinh nghiệm</h4>
+                    <p style="color:var(--text-secondary);font-size:0.95rem;line-height:1.6;">
+                        <strong style="color:#fff;">IELTS 6.5</strong> (2021) &middot;
+                        <strong style="color:#fff;">HSK4</strong> (2026)<br />
+                        Cử nhân Báo chí – Học viện Báo chí và Tuyên truyền.<br />
+                        Giảng dạy tiếng Anh cho nhiều đối tượng.
+                    </p>
+                </div>
+
+                <!-- card 3: teaching areas -->
+                <div class="glass-card reveal" style="text-align:center;">
+                    <div style="font-size:2.8rem;color:var(--primary);margin-bottom:12px;">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h4 style="color:#fff;font-size:1.1rem;margin-bottom:8px;">Lĩnh vực giảng dạy</h4>
+                    <p style="color:var(--text-secondary);font-size:0.95rem;line-height:1.6;">
+                        <strong style="color:#fff;">Tiếng Anh giao tiếp</strong> &middot;
+                        <strong style="color:#fff;">Luyện thi IELTS</strong> &middot;
+                        <strong style="color:#fff;">Tiếng Anh cho MC/Host</strong> &middot;
+                        Tiếng Anh thương mại &amp; học thuật.
+                    </p>
+                    <div style="margin-top:12px;display:flex;flex-wrap:wrap;justify-content:center;gap:6px;">
+                        <span class="lang-tag" style="background:var(--primary-light);color:var(--primary);">Giao tiếp</span>
+                        <span class="lang-tag" style="background:var(--primary-light);color:var(--primary);">IELTS</span>
+                        <span class="lang-tag" style="background:var(--primary-light);color:var(--primary);">MC English</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    4. EVENTS (unchanged)
     ============================================================ -->
     <section id="events" style="background:var(--bg-surface);">
         <div class="container">
             <div class="reveal">
-                <h2 class="section-title">Highlight Events</h2>
-                <p class="section-subtitle">From intimate workshops to large-scale competitions</p>
+                <h2 class="section-title">Sự kiện nổi bật</h2>
+                <p class="section-subtitle">Từ những workshop quy mô nhỏ đến các cuộc thi và sự kiện lớn.</p>
             </div>
 
             <div class="events-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px;">
-                <!-- 1 -->
                 <div class="event-card" style="background:var(--bg-surface);border:1px solid var(--border-color);border-radius:var(--radius-lg);padding:24px 26px;transition:var(--transition-bounce);box-shadow:var(--card-glow);position:relative;overflow:hidden;">
                     <span class="event-tag talk" style="display:inline-block;font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:4px 12px;border-radius:var(--radius-full);background:var(--primary-light);color:var(--primary);margin-bottom:12px;">TALKSHOW</span>
                     <h4 style="font-size:1.1rem;margin-bottom:6px;color:#fff;">Tọa đàm Hồ sơ đỉnh chóp – Chẳng lo về job</h4>
                     <p class="event-org" style="font-size:0.85rem;color:var(--text-muted);">Học viện Công nghệ Bưu chính Viễn thông</p>
                 </div>
-                <!-- 2 -->
                 <div class="event-card" style="background:var(--bg-surface);border:1px solid var(--border-color);border-radius:var(--radius-lg);padding:24px 26px;transition:var(--transition-bounce);box-shadow:var(--card-glow);position:relative;overflow:hidden;">
-                    <span class="event-tag" style="display:inline-block;font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:4px 12px;border-radius:var(--radius-full);background:var(--primary-light);color:var(--primary);margin-bottom:12px;">COMPETITION</span>
+                    <span class="event-tag" style="display:inline-block;font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:4px 12px;border-radius:var(--radius-full);background:var(--primary-light);color:var(--primary);margin-bottom:12px;">CUỘC THI</span>
                     <h4 style="font-size:1.1rem;margin-bottom:6px;color:#fff;">Chung kết Cuộc thi tranh biện</h4>
                     <p class="event-org" style="font-size:0.85rem;color:var(--text-muted);">Trường ĐH Giáo dục – ĐHQGHN</p>
                 </div>
-                <!-- 3 -->
                 <div class="event-card" style="background:var(--bg-surface);border:1px solid var(--border-color);border-radius:var(--radius-lg);padding:24px 26px;transition:var(--transition-bounce);box-shadow:var(--card-glow);position:relative;overflow:hidden;">
-                    <span class="event-tag talk" style="display:inline-block;font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:4px 12px;border-radius:var(--radius-full);background:var(--primary-light);color:var(--primary);margin-bottom:12px;">SEMINAR</span>
+                    <span class="event-tag talk" style="display:inline-block;font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:4px 12px;border-radius:var(--radius-full);background:var(--primary-light);color:var(--primary);margin-bottom:12px;">HỘI THẢO</span>
                     <h4 style="font-size:1.1rem;margin-bottom:6px;color:#fff;">Ứng dụng AI trong giảng dạy, nghiên cứu và quản lý</h4>
                     <p class="event-org" style="font-size:0.85rem;color:var(--text-muted);">Đại học Hà Nội</p>
                 </div>
-                <!-- 4 -->
                 <div class="event-card" style="background:var(--bg-surface);border:1px solid var(--border-color);border-radius:var(--radius-lg);padding:24px 26px;transition:var(--transition-bounce);box-shadow:var(--card-glow);position:relative;overflow:hidden;">
-                    <span class="event-tag internal" style="display:inline-block;font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:4px 12px;border-radius:var(--radius-full);background:var(--secondary-light);color:var(--secondary);margin-bottom:12px;">INTERNAL</span>
+                    <span class="event-tag internal" style="display:inline-block;font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:4px 12px;border-radius:var(--radius-full);background:var(--secondary-light);color:var(--secondary);margin-bottom:12px;">SỰ KIỆN NỘI BỘ</span>
                     <h4 style="font-size:1.1rem;margin-bottom:6px;color:#fff;">First meeting – CLB tiếng Anh</h4>
                     <p class="event-org" style="font-size:0.85rem;color:var(--text-muted);">Học viện Báo chí và Tuyên truyền</p>
                 </div>
-                <!-- 5 -->
                 <div class="event-card" style="background:var(--bg-surface);border:1px solid var(--border-color);border-radius:var(--radius-lg);padding:24px 26px;transition:var(--transition-bounce);box-shadow:var(--card-glow);position:relative;overflow:hidden;">
-                    <span class="event-tag internal" style="display:inline-block;font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:4px 12px;border-radius:var(--radius-full);background:var(--secondary-light);color:var(--secondary);margin-bottom:12px;">INTERNAL</span>
+                    <span class="event-tag internal" style="display:inline-block;font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:4px 12px;border-radius:var(--radius-full);background:var(--secondary-light);color:var(--secondary);margin-bottom:12px;">SỰ KIỆN NỘI BỘ</span>
                     <h4 style="font-size:1.1rem;margin-bottom:6px;color:#fff;">8th birthday – CLB tiếng Anh</h4>
                     <p class="event-org" style="font-size:0.85rem;color:var(--text-muted);">Học viện Báo chí và Tuyên truyền</p>
                 </div>
-                <!-- 6 -->
                 <div class="event-card" style="background:var(--bg-surface);border:1px solid var(--border-color);border-radius:var(--radius-lg);padding:24px 26px;transition:var(--transition-bounce);box-shadow:var(--card-glow);position:relative;overflow:hidden;">
-                    <span class="event-tag internal" style="display:inline-block;font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:4px 12px;border-radius:var(--radius-full);background:var(--secondary-light);color:var(--secondary);margin-bottom:12px;">INTERNAL</span>
+                    <span class="event-tag internal" style="display:inline-block;font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:4px 12px;border-radius:var(--radius-full);background:var(--secondary-light);color:var(--secondary);margin-bottom:12px;">SỰ KIỆN NỘI BỘ</span>
                     <h4 style="font-size:1.1rem;margin-bottom:6px;color:#fff;">Year End Party – CLB tiếng Anh</h4>
                     <p class="event-org" style="font-size:0.85rem;color:var(--text-muted);">Học viện Báo chí và Tuyên truyền</p>
                 </div>
-                <!-- 7 -->
                 <div class="event-card" style="background:var(--bg-surface);border:1px solid var(--border-color);border-radius:var(--radius-lg);padding:24px 26px;transition:var(--transition-bounce);box-shadow:var(--card-glow);position:relative;overflow:hidden;">
-                    <span class="event-tag online" style="display:inline-block;font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:4px 12px;border-radius:var(--radius-full);background:var(--info-light);color:var(--info);margin-bottom:12px;">FULL ENGLISH</span>
+                    <span class="event-tag online" style="display:inline-block;font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:4px 12px;border-radius:var(--radius-full);background:var(--info-light);color:var(--info);margin-bottom:12px;">DẪN HOÀN TOÀN BẰNG TIẾNG ANH</span>
                     <h4 style="font-size:1.1rem;margin-bottom:6px;color:#fff;">Cuộc thi OUTSIDE THE BOX</h4>
                     <p class="event-org" style="font-size:0.85rem;color:var(--text-muted);">CLB tiếng Anh – Học viện Báo chí</p>
                 </div>
-                <!-- 8 -->
                 <div class="event-card" style="background:var(--bg-surface);border:1px solid var(--border-color);border-radius:var(--radius-lg);padding:24px 26px;transition:var(--transition-bounce);box-shadow:var(--card-glow);position:relative;overflow:hidden;">
-                    <span class="event-tag child" style="display:inline-block;font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:4px 12px;border-radius:var(--radius-full);background:var(--success-light);color:var(--success);margin-bottom:12px;">CHILDREN</span>
+                    <span class="event-tag child" style="display:inline-block;font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:4px 12px;border-radius:var(--radius-full);background:var(--success-light);color:var(--success);margin-bottom:12px;">THIẾU NHI</span>
                     <h4 style="font-size:1.1rem;margin-bottom:6px;color:#fff;">Các chương trình Trung thu, thiếu nhi</h4>
                     <p class="event-org" style="font-size:0.85rem;color:var(--text-muted);">Sự kiện dành cho thiếu nhi</p>
                 </div>
-                <!-- 9 -->
                 <div class="event-card" style="background:var(--bg-surface);border:1px solid var(--border-color);border-radius:var(--radius-lg);padding:24px 26px;transition:var(--transition-bounce);box-shadow:var(--card-glow);position:relative;overflow:hidden;">
-                    <span class="event-tag talk" style="display:inline-block;font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:4px 12px;border-radius:var(--radius-full);background:var(--primary-light);color:var(--primary);margin-bottom:12px;">EDUCATION</span>
+                    <span class="event-tag talk" style="display:inline-block;font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:4px 12px;border-radius:var(--radius-full);background:var(--primary-light);color:var(--primary);margin-bottom:12px;">GIÁO DỤC</span>
                     <h4 style="font-size:1.1rem;margin-bottom:6px;color:#fff;">Các sự kiện, workshop giáo dục</h4>
                     <p class="event-org" style="font-size:0.85rem;color:var(--text-muted);">Học viện Báo chí và Tuyên truyền</p>
                 </div>
-                <!-- 10 -->
                 <div class="event-card" style="background:var(--bg-surface);border:1px solid var(--border-color);border-radius:var(--radius-lg);padding:24px 26px;transition:var(--transition-bounce);box-shadow:var(--card-glow);position:relative;overflow:hidden;">
-                    <span class="event-tag" style="display:inline-block;font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:4px 12px;border-radius:var(--radius-full);background:var(--primary-light);color:var(--primary);margin-bottom:12px;">TV / TVC</span>
+                    <span class="event-tag" style="display:inline-block;font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:4px 12px;border-radius:var(--radius-full);background:var(--primary-light);color:var(--primary);margin-bottom:12px;">TRUYỀN HÌNH / TVC</span>
                     <h4 style="font-size:1.1rem;margin-bottom:6px;color:#fff;">Bản tin truyền hình &amp; TVC quảng cáo</h4>
                     <p class="event-org" style="font-size:0.85rem;color:var(--text-muted);">Phát sóng trên VTC6</p>
                 </div>
-                <!-- 11 -->
                 <div class="event-card" style="background:var(--bg-surface);border:1px solid var(--border-color);border-radius:var(--radius-lg);padding:24px 26px;transition:var(--transition-bounce);box-shadow:var(--card-glow);position:relative;overflow:hidden;">
-                    <span class="event-tag online" style="display:inline-block;font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:4px 12px;border-radius:var(--radius-full);background:var(--info-light);color:var(--info);margin-bottom:12px;">ONLINE</span>
+                    <span class="event-tag online" style="display:inline-block;font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:4px 12px;border-radius:var(--radius-full);background:var(--info-light);color:var(--info);margin-bottom:12px;">TRỰC TUYẾN</span>
                     <h4 style="font-size:1.1rem;margin-bottom:6px;color:#fff;">Các sự kiện trực tuyến</h4>
                     <p class="event-org" style="font-size:0.85rem;color:var(--text-muted);">Đa dạng nền tảng số</p>
                 </div>
@@ -651,13 +371,13 @@
     </section>
 
     <!-- ============================================================
-    AWARDS (kept)
+    5. AWARDS & RECOGNITION (unchanged)
     ============================================================ -->
     <section id="awards">
         <div class="container">
             <div class="reveal">
-                <h2 class="section-title">Awards &amp; Recognition</h2>
-                <p class="section-subtitle">Milestones that shaped my journey</p>
+                <h2 class="section-title">Thành tựu &amp; Dấu ấn</h2>
+                <p class="section-subtitle">Những cột mốc đánh dấu hành trình của tôi</p>
             </div>
 
             <div class="awards-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px;">
@@ -691,13 +411,13 @@
     </section>
 
     <!-- ============================================================
-    PARTNERS (kept)
+    6. PARTNERS (unchanged)
     ============================================================ -->
     <section id="partners" style="background:var(--bg-surface);">
         <div class="container">
             <div class="reveal">
-                <h2 class="section-title">Trusted Partners</h2>
-                <p class="section-subtitle">Proud to have collaborated with</p>
+                <h2 class="section-title">Đối tác đồng hành</h2>
+                <p class="section-subtitle">Tự hào được hợp tác cùng</p>
             </div>
 
             <div class="partners-grid" style="display:flex;flex-wrap:wrap;gap:20px 32px;justify-content:center;align-items:center;padding:16px 0;">
@@ -715,13 +435,13 @@
     </section>
 
     <!-- ============================================================
-    CONTACT (kept)
+    7. CONTACT (unchanged)
     ============================================================ -->
     <section id="contact">
         <div class="container">
             <div class="reveal">
-                <h2 class="section-title">Let's Connect</h2>
-                <p class="section-subtitle">Ready to make your event shine? Reach out.</p>
+                <h2 class="section-title">Liên hệ</h2>
+                <p class="section-subtitle">Sẵn sàng cùng bạn tạo nên một sự kiện đáng nhớ.</p>
             </div>
 
             <div class="contact-wrap" style="display:grid;grid-template-columns:1fr 1fr;gap:40px;">
@@ -729,54 +449,53 @@
                     <div class="contact-item" style="display:flex;align-items:center;gap:16px;padding:14px 0;border-bottom:1px solid rgba(71,85,105,0.2);">
                         <i class="fas fa-phone-alt" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:var(--primary-light);color:var(--primary);font-size:1.1rem;flex-shrink:0;"></i>
                         <div>
-                            <div class="ci-label" style="font-size:0.8rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.04em;">Phone</div>
-                            <div class="ci-value" style="color:#fff;font-weight:500;">+84 90 123 4567</div>
+                            <div class="ci-label" style="font-size:0.8rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.04em;">Điện thoại</div>
+                            <div class="ci-value" style="color:#fff;font-weight:500;">+84 339 468 816</div>
                         </div>
                     </div>
                     <div class="contact-item" style="display:flex;align-items:center;gap:16px;padding:14px 0;border-bottom:1px solid rgba(71,85,105,0.2);">
                         <i class="fas fa-envelope" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:var(--primary-light);color:var(--primary);font-size:1.1rem;flex-shrink:0;"></i>
                         <div>
                             <div class="ci-label" style="font-size:0.8rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.04em;">Email</div>
-                            <div class="ci-value" style="color:#fff;font-weight:500;">thanh.phuong@mcportfolio.com</div>
+                            <div class="ci-value" style="color:#fff;font-weight:500;">contact.phuongthanh@gmail.com</div>
                         </div>
                     </div>
                     <div class="contact-item" style="display:flex;align-items:center;gap:16px;padding:14px 0;border-bottom:1px solid rgba(71,85,105,0.2);">
                         <i class="fas fa-map-marker-alt" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:var(--primary-light);color:var(--primary);font-size:1.1rem;flex-shrink:0;"></i>
                         <div>
-                            <div class="ci-label" style="font-size:0.8rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.04em;">Location</div>
-                            <div class="ci-value" style="color:#fff;font-weight:500;">Cầu Giấy, Hà Nội, Việt Nam</div>
+                            <div class="ci-label" style="font-size:0.8rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.04em;">Địa điểm thường trú</div>
+                            <div class="ci-value" style="color:#fff;font-weight:500;">Hà Nội, Việt Nam</div>
                         </div>
                     </div>
                     <div class="contact-item" style="display:flex;align-items:center;gap:16px;padding:14px 0;border-bottom:none;">
                         <i class="fas fa-clock" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:var(--primary-light);color:var(--primary);font-size:1.1rem;flex-shrink:0;"></i>
                         <div>
-                            <div class="ci-label" style="font-size:0.8rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.04em;">Availability</div>
-                            <div class="ci-value" style="color:#fff;font-weight:500;">Open for events &amp; collaborations</div>
+                            <div class="ci-label" style="font-size:0.8rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.04em;">Tình trạng nhận lịch</div>
+                            <div class="ci-value" style="color:#fff;font-weight:500;">Sẵn sàng đồng hành cùng các sự kiện và dự án hợp tác.</div>
                         </div>
                     </div>
                     <div style="margin-top:20px;display:flex;gap:12px;flex-wrap:wrap;">
                         <a href="#" class="btn btn-primary" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--primary);color:#0f172a;font-weight:600;border:none;padding:10px 24px;font-size:1rem;border-radius:var(--radius);cursor:pointer;transition:var(--transition-bounce);text-decoration:none;">
-                            <i class="fas fa-paper-plane"></i> Book Now
+                            <i class="fas fa-paper-plane"></i> Đặt lịch ngay
                         </a>
-                        <a href="#" class="btn btn-secondary" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;background:transparent;color:var(--text-secondary);font-weight:600;border:1px solid var(--border-color);padding:10px 24px;font-size:1rem;border-radius:var(--radius);cursor:pointer;transition:var(--transition-bounce);text-decoration:none;">
-                            <i class="fab fa-facebook-messenger"></i> Message
+                        <a href="https://www.facebook.com/PhuongThanh.bilingual#" class="btn btn-secondary" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;background:transparent;color:var(--text-secondary);font-weight:600;border:1px solid var(--border-color);padding:10px 24px;font-size:1rem;border-radius:var(--radius);cursor:pointer;transition:var(--transition-bounce);text-decoration:none;">
+                            <i class="fab fa-facebook-messenger"></i> Messenger
                         </a>
                     </div>
                 </div>
-
                 <div class="contact-form reveal">
-                    <form style="background:var(--glass-bg);backdrop-filter:blur(8px);border:1px solid var(--glass-border);border-radius:var(--radius-xl);padding:32px;margin:0;">
-                        <label for="name" style="display:block;margin-bottom:8px;font-weight:600;color:var(--text-secondary);">Your Name</label>
+                    <form id="contactForm" style="background:var(--glass-bg);backdrop-filter:blur(8px);border:1px solid var(--glass-border);border-radius:var(--radius-xl);padding:32px;margin:0;">
+                        <label for="name" style="display:block;margin-bottom:8px;font-weight:600;color:var(--text-secondary);">Họ và tên</label>
                         <input type="text" id="name" placeholder="Nguyễn Văn A" style="width:100%;padding:12px 16px;background:var(--bg-input);border:2px solid var(--border-color);color:var(--text-main);border-radius:var(--radius);margin-bottom:16px;transition:var(--transition);font-family:inherit;" />
 
                         <label for="email" style="display:block;margin-bottom:8px;font-weight:600;color:var(--text-secondary);">Email</label>
                         <input type="email" id="email" placeholder="you@example.com" style="width:100%;padding:12px 16px;background:var(--bg-input);border:2px solid var(--border-color);color:var(--text-main);border-radius:var(--radius);margin-bottom:16px;transition:var(--transition);font-family:inherit;" />
 
-                        <label for="message" style="display:block;margin-bottom:8px;font-weight:600;color:var(--text-secondary);">Message</label>
-                        <textarea id="message" placeholder="Tell me about your event…" style="width:100%;padding:12px 16px;background:var(--bg-input);border:2px solid var(--border-color);color:var(--text-main);border-radius:var(--radius);margin-bottom:16px;transition:var(--transition);font-family:inherit;min-height:120px;resize:vertical;"></textarea>
+                        <label for="message" style="display:block;margin-bottom:8px;font-weight:600;color:var(--text-secondary);">Nội dung</label>
+                        <textarea id="message" placeholder="Nhập nội dung..." style="width:100%;padding:12px 16px;background:var(--bg-input);border:2px solid var(--border-color);color:var(--text-main);border-radius:var(--radius);margin-bottom:16px;transition:var(--transition);font-family:inherit;min-height:120px;resize:vertical;"></textarea>
 
                         <button type="submit" class="btn" style="width:100%;justify-content:center;background:var(--primary);color:#0f172a;font-weight:700;border:none;padding:10px 24px;font-size:1rem;border-radius:var(--radius);cursor:pointer;transition:var(--transition-bounce);display:inline-flex;align-items:center;gap:8px;">
-                            <i class="fas fa-paper-plane"></i> Send Message
+                            <i class="fas fa-paper-plane"></i> Gửi email
                         </button>
                     </form>
                 </div>
@@ -802,21 +521,15 @@
     SCRIPTS
     ============================================================ -->
     <script>
-        // Copy function for phone & email buttons
+        // Copy function
         function copyText(text) {
-            // Use clipboard API
             if (navigator.clipboard) {
                 navigator.clipboard.writeText(text).then(() => {
-                    // Optional: show feedback (simple alert)
-                    // We can add a small tooltip or change button state briefly
-                    // For simplicity, we'll just show a brief console log
                     console.log('Copied: ' + text);
-                    // Could also show a toast notification here
                 }).catch(err => {
                     console.error('Copy failed: ', err);
                 });
             } else {
-                // Fallback: select and copy
                 const textArea = document.createElement('textarea');
                 textArea.value = text;
                 document.body.appendChild(textArea);
@@ -831,7 +544,107 @@
             }
         }
 
-        // ----- scroll reveal (keep existing) -----
+        // ===== LANGUAGE DROPDOWN TOGGLE =====
+        (function() {
+            const btn = document.getElementById('langDropdownBtn');
+            const menu = document.getElementById('langDropdownMenu');
+            const overlay = document.getElementById('langOverlay');
+            const arrow = document.getElementById('dropdownArrow');
+
+            // Language config: flag + label per page
+            // We determine current language from the page URL or <html lang>
+            const langMap = {
+                'vi': { flag: '🇻🇳', label: 'VI' },
+                'en': { flag: '🇬🇧', label: 'EN' },
+                'zh': { flag: '🇨🇳', label: '中文' }
+            };
+
+            // Detect current language from <html lang> or page filename
+            let currentLang = document.documentElement.lang || 'vi';
+            // If URL contains eindex.html → en, cindex.html → zh, else vi
+            const path = window.location.pathname;
+            if (path.includes('eindex.html') || path.includes('en')) currentLang = 'en';
+            else if (path.includes('cindex.html') || path.includes('zh')) currentLang = 'zh';
+            else currentLang = 'vi';
+
+            // Update button with current language
+            function updateButton(lang) {
+                const info = langMap[lang] || langMap['vi'];
+                document.getElementById('currentFlag').textContent = info.flag;
+                document.getElementById('currentLangLabel').textContent = info.label;
+                // Update active state in menu
+                const links = menu.querySelectorAll('a');
+                links.forEach(link => {
+                    link.classList.remove('active-lang');
+                    const href = link.getAttribute('href');
+                    if (href && href.includes(lang)) {
+                        link.classList.add('active-lang');
+                    }
+                    // Also match by data-lang
+                    if (link.dataset.lang === lang) {
+                        link.classList.add('active-lang');
+                    }
+                });
+            }
+
+            updateButton(currentLang);
+
+            // Toggle dropdown
+            function toggleDropdown(open) {
+                const isOpen = menu.classList.contains('open');
+                if (open === undefined) {
+                    menu.classList.toggle('open');
+                    overlay.classList.toggle('active');
+                    arrow.classList.toggle('open');
+                } else if (open) {
+                    menu.classList.add('open');
+                    overlay.classList.add('active');
+                    arrow.classList.add('open');
+                } else {
+                    menu.classList.remove('open');
+                    overlay.classList.remove('active');
+                    arrow.classList.remove('open');
+                }
+            }
+
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                toggleDropdown();
+            });
+
+            overlay.addEventListener('click', function() {
+                toggleDropdown(false);
+            });
+
+            // Close on escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    toggleDropdown(false);
+                }
+            });
+
+            // When a language link is clicked, update button before navigation
+            menu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    let lang = 'vi';
+                    if (href.includes('eindex')) lang = 'en';
+                    else if (href.includes('cindex')) lang = 'zh';
+                    else lang = 'vi';
+                    updateButton(lang);
+                    // The page will navigate, so no need to close manually
+                });
+            });
+
+            // Close dropdown on window resize (mobile)
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    toggleDropdown(false);
+                }
+            });
+        })();
+
+        // scroll reveal
         (function() {
             const revealElements = document.querySelectorAll('.reveal');
             const options = { root: null, rootMargin: '0px 0px -40px 0px', threshold: 0.1 };
@@ -849,7 +662,6 @@
                 });
             }, options);
             revealElements.forEach(el => observer.observe(el));
-            // initial check
             setTimeout(() => {
                 revealElements.forEach(el => {
                     const rect = el.getBoundingClientRect();
@@ -861,7 +673,7 @@
             }, 100);
         })();
 
-        // ----- nav highlight -----
+        // nav highlight
         const sections = document.querySelectorAll('section[id]');
         const navLinks = document.querySelectorAll('.nav-links a');
 
@@ -882,6 +694,29 @@
         }
         window.addEventListener('scroll', highlightNav);
         highlightNav();
+
+        // Contact form mailto
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('contactForm');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const name = document.getElementById('name').value.trim();
+                    const email = document.getElementById('email').value.trim();
+                    const message = document.getElementById('message').value.trim();
+                    if (!name || !email || !message) {
+                        alert('Vui lòng điền đầy đủ thông tin.');
+                        return;
+                    }
+                    const subject = encodeURIComponent('Liên hệ từ ' + name);
+                    const body = encodeURIComponent(
+                        'Họ tên: ' + name + '\nEmail: ' + email + '\n\nNội dung:\n' + message
+                    );
+                    window.location.href = 'mailto:contact.phuongthanh@gmail.com?subject=' + subject + '&body=' +
+                        body;
+                });
+            }
+        });
     </script>
 
 </body>

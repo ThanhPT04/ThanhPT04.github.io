@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <title>MC Phương Thanh</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Calistoga&family=Saira:wght@400;600;700&family=Great+Vibes&family=Inter:opsz@14..32&family=Merriweather:wght@300;400;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css.css"/>
+    <link rel="stylesheet" href="animation.css"/>
+</head>
+<body>
+
+    <!-- ============================================================
+    NAVBAR
+    ============================================================ -->
+    <nav class="navbar-custom" id="navbar">
+        <div class="container">
+            <a href="#" class="navbar-brand">
+                <i class="fas fa-microphone-alt"></i>
+                Phương Thanh
+            </a>
+
+            <button class="hamburger" id="hamburgerBtn" aria-label="Mở menu điều hướng" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div class="nav-links-wrapper" id="navLinksWrapper">
+                <ul class="nav-links">
+                    <li><a href="#about">Giới thiệu</a></li>
+                    <li><a href="#content-creator">Nhà sáng tạo nội dung</a></li>
+                    <li><a href="#teacher">Giáo viên</a></li>
+                    <li><a href="#events">Sự kiện</a></li>
+                    <li><a href="#awards">Thành tựu</a></li>
+                    <li><a href="#partners">Đối tác</a></li>
+                    <li><a href="#contact">Liên hệ</a></li>
+                </ul>
+            </div>
+
+            <div class="lang-switch">
+                <div class="lang-dropdown">
+                    <button class="lang-dropdown-btn" id="langDropdownBtn" aria-label="Chọn ngôn ngữ">
+                        <span class="flag-icon" id="currentFlag">🇻🇳</span>
+                        <span id="currentLangLabel">VI</span>
+                        <i class="fas fa-chevron-down dropdown-arrow" id="dropdownArrow"></i>
+                    </button>
+                    <div class="lang-dropdown-overlay" id="langOverlay"></div>
+                    <div class="lang-dropdown-menu" id="langDropdownMenu">
+                        <a href="index.html" class="active-lang" data-lang="vi">
+                            <span class="flag-icon">VN</span>
+                            <span class="lang-label">Tiếng Việt</span>
+                            <i class="fas fa-check check-icon"></i>
+                        </a>
+                        <a href="eindex.html" data-lang="en">
+                            <span class="flag-icon">EN</span>
+                            <span class="lang-label">English</span>
+                            <i class="fas fa-check check-icon"></i>
+                        </a>
+                        <a href="cindex.html" data-lang="zh">
+                            <span class="flag-icon">CN</span>
+                            <span class="lang-label">中文</span>
+                            <i class="fas fa-check check-icon"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ============================================================
+    HERO
+    ============================================================ -->
+    <section class="hero" id="home">
+        <div class="pink-fade"></div>
+        <div class="container hero-content">
+            <div class="hero-left">
+                <div class="hero-signature">Portfolio</div>
+                <div class="hero-name">Phương Thanh</div>
+                <div class="info-buttons">
+                    <button class="info-btn copy-btn" data-copy="0339468816" onclick="copyText('0339468816')">
+                        <i class="fas fa-phone-alt"></i>
+                        <span class="btn-label">Điện thoại</span>
+                        <span class="btn-value">0339468816</span>
+                    </button>
+                    <button class="info-btn copy-btn" data-copy="contact.phuongthanh@gmail.com" onclick="copyText('contact.phuongthanh@gmail.com')">
+                        <i class="fas fa-envelope"></i>
+                        <span class="btn-label">Email</span>
+                        <span class="btn-value">contact.phuongthanh@gmail.com</span>
+                    </button>
+                    <a href="https://www.tiktok.com/@thankful.mp4" target="_blank" class="info-btn" style="text-decoration:none;">
+                        <i class="fab fa-tiktok"></i>
+                        <span class="btn-label">Tiktok</span>
+                        <span class="btn-value">@thankful.mp4</span>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-right">
+                <div class="info-header">Thông tin</div>
+                <div class="info-line"><span class="label">Họ tên</span><span class="value">Phương Thúy Thanh</span></div>
+                <div class="info-line"><span class="label">Học vấn</span><span class="value">Học viện Báo chí và Tuyên truyền</span></div>
+                <div class="info-line"><span class="label">Kinh nghiệm</span><span class="value">4 năm</span></div>
+                <div class="info-line"><span class="label">Ngôn ngữ</span><span class="value"><span class="lang-tag">vn Việt</span><span class="lang-tag">en English</span><span class="lang-tag">cn 中文</span></span></div>
+                <div class="info-line"><span class="label">Chiều cao</span><span class="value">1m55</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    ABOUT
+    ============================================================ -->
+    <section id="about">
+        <div class="container">
+            <div class="reveal">
+                <h2 class="section-title">Giới thiệu</h2>
+                <p class="section-subtitle">MC/Host · Giáo viên tiếng Anh · Nhà sáng tạo nội dung</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-desc reveal">
+                    <p style="font-size:clamp(1rem, 1vw + 0.4rem, 1.1rem);color:#fff;font-weight:500;margin-bottom:12px;">
+                        <i class="fas fa-hand-peace" style="color:var(--primary,#38bdf8);margin-right:8px;"></i>
+                        Xin chào! Mình là Phương Thúy Thanh.
+                    </p>
+                    <p>
+                        Một MC song ngữ luôn mong muốn kết nối mọi người thông qua những <strong>câu chuyện truyền cảm hứng</strong> và <strong>phong thái dẫn dắt chân thành, gần gũi</strong>.
+                        Với hơn 4 năm kinh nghiệm dẫn dắt sự kiện, talkshow, cuộc thi và các chương trình truyền hình, tôi luôn mang đến nguồn năng lượng tích cực, sự chuyên nghiệp và cảm giác gần gũi trên sân khấu - dù là bằng <strong>tiếng Việt, tiếng Anh hay tiếng Trung</strong>.
+                    </p>
+                    <p style="margin-top:12px;">
+                        Tôi tin rằng mỗi sự kiện đều mang một câu chuyện riêng. Và tôi ở đây để cùng kể câu chuyện ấy theo cách chân thực, truyền cảm hứng và đáng nhớ nhất.
+                    </p>
+                </div>
+                <div class="about-card glass-card reveal" data-href="about-detail.html">
+                    <div class="info-row">
+                        <span class="info-label"><i class="fas fa-user"></i>Họ và tên</span>
+                        <span class="info-value">Phương Thúy Thanh</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label"><i class="fas fa-graduation-cap"></i>Học vấn</span>
+                        <span class="info-value">Học viện Báo chí và Tuyên truyền</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label"><i class="fas fa-briefcase"></i>Kinh nghiệm</span>
+                        <span class="info-value">4+ năm</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label"><i class="fas fa-ruler-vertical"></i>Chiều cao</span>
+                        <span class="info-value">1m55</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label"><i class="fas fa-language"></i>Ngôn ngữ</span>
+                        <span class="info-value">
+                            <span class="lang-tag">🇻🇳 Tiếng Việt</span>
+                            <span class="lang-tag">🇬🇧 Tiếng Anh</span>
+                            <span class="lang-tag">🇨🇳 Tiếng Trung</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    CONTENT CREATOR
+    ============================================================ -->
+    <section id="content-creator" style="background:var(--bg-surface,#1e293b);">
+        <div class="container">
+            <div class="reveal">
+                <h2 class="section-title">Nhà sáng tạo nội dung</h2>
+                <p class="section-subtitle">Sáng tạo nội dung đa nền tảng – Kết nối cộng đồng</p>
+            </div>
+            <div class="creator-grid">
+                <div class="creator-desc reveal">
+                    <p style="color:var(--text-secondary,#cbd5e1);line-height:1.7;">
+                        Bên cạnh vai trò MC, mình còn hoạt động tích cực với tư cách là
+                        <strong style="color:#fff;">nhà sáng tạo nội dung</strong> trên các nền tảng số.
+                        Mình yêu thích việc xây dựng những câu chuyện gần gũi, truyền cảm hứng học tập
+                        và khám phá ngôn ngữ thông qua các video, bài viết và livestream.
+                    </p>
+                    <p style="color:var(--text-secondary,#cbd5e1);line-height:1.7;margin-top:12px;">
+                        Các nội dung mình tập trung khai thác: <strong style="color:#fff;">học tiếng Anh</strong>,
+                        <strong style="color:#fff;">kỹ năng giao tiếp</strong> và <strong style="color:#fff;">những trải nghiệm đời sống</strong>
+                        – luôn mang đến giá trị thực và cảm xúc tích cực cho người xem.
+                    </p>
+                    <div class="flex-wrap-responsive" style="gap:8px;margin-top:16px;">
+                        <span class="badge-icon"><i class="fab fa-tiktok"></i> Tiktok 4.5K+</span>
+                        <span class="badge-icon"><i class="fas fa-video"></i> Video ngắn</span>
+                        <span class="badge-icon"><i class="fas fa-pen-fancy"></i> Viết lách</span>
+                        <span class="badge-icon"><i class="fas fa-bullhorn"></i> Livestream</span>
+                    </div>
+                </div>
+                <div class="glass-card reveal" data-href="content-detail.html">
+                    <h4 style="font-size:clamp(1rem,1vw+0.4rem,1.1rem);color:#fff;margin-bottom:16px;">
+                        <i class="fas fa-handshake" style="color:var(--primary,#38bdf8);margin-right:10px;"></i>
+                        Hợp tác nội dung
+                    </h4>
+                    <div class="flex-wrap-responsive" style="gap:8px;">
+                        <span class="partner-chip" style="cursor:default;">Huyền học lab</span>
+                        <span class="partner-chip" style="cursor:default;">CollaNote</span>
+                        <span class="partner-chip" style="cursor:default;">EnglishWell</span>
+                    </div>
+                    <div style="margin-top:12px;">
+                        <span style="font-size:clamp(0.75rem,0.6vw+0.3rem,0.85rem);color:var(--text-muted,#94a3b8);">
+                            <i class="fas fa-users" style="color:var(--primary,#38bdf8);margin-right:6px;"></i>
+                            Cộng tác với các thương hiệu giáo dục &amp; nền tảng học tập
+                        </span>
+                    </div>
+                    <hr style="margin:16px 0;border-color:var(--border-color,#475569);opacity:0.3;" />
+                    <div class="flex-wrap-responsive" style="gap:6px;">
+                        <span class="lang-tag" style="background:var(--success-light,rgba(52,211,153,0.15));color:var(--success,#34d399);display:inline-block;padding:2px 12px;border-radius:9999px;font-size:clamp(0.65rem,0.5vw+0.3rem,0.75rem);font-weight:600;">Sáng tạo video</span>
+                        <span class="lang-tag" style="background:var(--success-light,rgba(52,211,153,0.15));color:var(--success,#34d399);display:inline-block;padding:2px 12px;border-radius:9999px;font-size:clamp(0.65rem,0.5vw+0.3rem,0.75rem);font-weight:600;">Viết content</span>
+                        <span class="lang-tag" style="background:var(--success-light,rgba(52,211,153,0.15));color:var(--success,#34d399);display:inline-block;padding:2px 12px;border-radius:9999px;font-size:clamp(0.65rem,0.5vw+0.3rem,0.75rem);font-weight:600;">Hợp tác thương hiệu</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    TEACHER
+    ============================================================ -->
+    <section id="teacher">
+        <div class="container">
+            <div class="reveal">
+                <h2 class="section-title">Giáo viên</h2>
+                <p class="section-subtitle">Đồng hành cùng bạn chinh phục tiếng Anh</p>
+            </div>
+            <div class="teacher-grid">
+                <div class="glass-card reveal" data-href="teacher-detail.html">
+                    <div style="font-size:clamp(2.2rem,3vw+0.5rem,2.8rem);color:var(--primary,#38bdf8);margin-bottom:12px;"><i class="fas fa-chalkboard-teacher"></i></div>
+                    <h4>Phương pháp giao tiếp</h4>
+                    <p>
+                        Tập trung vào <strong>phản xạ tự nhiên</strong> và
+                        <strong>tự tin giao tiếp</strong> trong mọi tình huống.
+                        Học tiếng Anh không chỉ là ngữ pháp – mà là cách bạn kết nối.
+                    </p>
+                </div>
+                <div class="glass-card reveal" data-href="teacher-detail.html">
+                    <div style="font-size:clamp(2.2rem,3vw+0.5rem,2.8rem);color:var(--primary,#38bdf8);margin-bottom:12px;"><i class="fas fa-certificate"></i></div>
+                    <h4>Chứng chỉ &amp; Kinh nghiệm</h4>
+                    <p>
+                        <strong>IELTS 6.5</strong> (2021) &middot;
+                        <strong>HSK4</strong> (2026)<br />
+                        Cử nhân Báo chí – Học viện Báo chí và Tuyên truyền.<br />
+                        Giảng dạy tiếng Anh cho nhiều đối tượng.
+                    </p>
+                </div>
+                <div class="glass-card reveal" data-href="teacher-detail.html">
+                    <div style="font-size:clamp(2.2rem,3vw+0.5rem,2.8rem);color:var(--primary,#38bdf8);margin-bottom:12px;"><i class="fas fa-book-open"></i></div>
+                    <h4>Lĩnh vực giảng dạy</h4>
+                    <p>
+                        <strong>Tiếng Anh giao tiếp</strong> &middot;
+                        <strong>Luyện thi IELTS</strong> &middot;
+                        <strong>Tiếng Anh cho MC/Host</strong> &middot;
+                        Tiếng Anh thương mại &amp; học thuật.
+                    </p>
+                    <div class="flex-wrap-responsive" style="justify-content:center;gap:6px;margin-top:12px;">
+                        <span class="lang-tag" style="background:var(--primary-light,rgba(56,189,248,0.15));color:var(--primary,#38bdf8);display:inline-block;padding:2px 12px;border-radius:9999px;font-size:clamp(0.65rem,0.5vw+0.3rem,0.75rem);font-weight:600;">Giao tiếp</span>
+                        <span class="lang-tag" style="background:var(--primary-light,rgba(56,189,248,0.15));color:var(--primary,#38bdf8);display:inline-block;padding:2px 12px;border-radius:9999px;font-size:clamp(0.65rem,0.5vw+0.3rem,0.75rem);font-weight:600;">IELTS</span>
+                        <span class="lang-tag" style="background:var(--primary-light,rgba(56,189,248,0.15));color:var(--primary,#38bdf8);display:inline-block;padding:2px 12px;border-radius:9999px;font-size:clamp(0.65rem,0.5vw+0.3rem,0.75rem);font-weight:600;">MC English</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    EVENTS
+    ============================================================ -->
+    <section id="events" style="background:var(--bg-surface,#1e293b);">
+        <div class="container">
+            <div class="reveal">
+                <h2 class="section-title">Sự kiện nổi bật</h2>
+                <p class="section-subtitle">Từ những workshop quy mô nhỏ đến các cuộc thi và sự kiện lớn.</p>
+            </div>
+            <div class="events-grid">
+                <div class="event-card reveal" data-href="event-detail.html">
+                    <span class="event-tag talk">TALKSHOW</span>
+                    <h4>Tọa đàm Hồ sơ đỉnh chóp – Chẳng lo về job</h4>
+                    <p class="event-org">Học viện Công nghệ Bưu chính Viễn thông</p>
+                </div>
+                <div class="event-card reveal" data-href="event-detail.html">
+                    <span class="event-tag talk">CUỘC THI</span>
+                    <h4>Chung kết Cuộc thi tranh biện</h4>
+                    <p class="event-org">Trường ĐH Giáo dục – ĐHQGHN</p>
+                </div>
+                <div class="event-card reveal" data-href="event-detail.html">
+                    <span class="event-tag talk">HỘI THẢO</span>
+                    <h4>Ứng dụng AI trong giảng dạy, nghiên cứu và quản lý</h4>
+                    <p class="event-org">Đại học Hà Nội</p>
+                </div>
+                <div class="event-card reveal" data-href="event-detail.html">
+                    <span class="event-tag internal">SỰ KIỆN NỘI BỘ</span>
+                    <h4>First meeting – CLB tiếng Anh</h4>
+                    <p class="event-org">Học viện Báo chí và Tuyên truyền</p>
+                </div>
+                <div class="event-card reveal" data-href="event-detail.html">
+                    <span class="event-tag internal">SỰ KIỆN NỘI BỘ</span>
+                    <h4>8th birthday – CLB tiếng Anh</h4>
+                    <p class="event-org">Học viện Báo chí và Tuyên truyền</p>
+                </div>
+                <div class="event-card reveal" data-href="event-detail.html">
+                    <span class="event-tag internal">SỰ KIỆN NỘI BỘ</span>
+                    <h4>Year End Party – CLB tiếng Anh</h4>
+                    <p class="event-org">Học viện Báo chí và Tuyên truyền</p>
+                </div>
+                <div class="event-card reveal" data-href="event-detail.html">
+                    <span class="event-tag online">DẪN HOÀN TOÀN BẰNG TIẾNG ANH</span>
+                    <h4>Cuộc thi OUTSIDE THE BOX</h4>
+                    <p class="event-org">CLB tiếng Anh – Học viện Báo chí</p>
+                </div>
+                <div class="event-card reveal" data-href="event-detail.html">
+                    <span class="event-tag child">THIẾU NHI</span>
+                    <h4>Các chương trình Trung thu, thiếu nhi</h4>
+                    <p class="event-org">Sự kiện dành cho thiếu nhi</p>
+                </div>
+                <div class="event-card reveal" data-href="event-detail.html">
+                    <span class="event-tag talk">GIÁO DỤC</span>
+                    <h4>Các sự kiện, workshop giáo dục</h4>
+                    <p class="event-org">Học viện Báo chí và Tuyên truyền</p>
+                </div>
+                <div class="event-card reveal" data-href="event-detail.html">
+                    <span class="event-tag talk">TRUYỀN HÌNH / TVC</span>
+                    <h4>Bản tin truyền hình &amp; TVC quảng cáo</h4>
+                    <p class="event-org">Phát sóng trên VTC6</p>
+                </div>
+                <div class="event-card reveal" data-href="event-detail.html">
+                    <span class="event-tag online">TRỰC TUYẾN</span>
+                    <h4>Các sự kiện trực tuyến</h4>
+                    <p class="event-org">Đa dạng nền tảng số</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    AWARDS
+    ============================================================ -->
+    <section id="awards">
+        <div class="container">
+            <div class="reveal">
+                <h2 class="section-title">Thành tựu &amp; Dấu ấn</h2>
+                <p class="section-subtitle">Những cột mốc đánh dấu hành trình của tôi</p>
+            </div>
+            <div class="awards-grid">
+                <div class="award-item reveal" data-href="award-detail.html">
+                    <div class="award-icon"><i class="fas fa-trophy"></i></div>
+                    <div class="award-title">Top 15 – MC Spotlight 2024</div>
+                    <div class="award-desc">ĐH Kinh tế Quốc dân · VTVMoney</div>
+                </div>
+                <div class="award-item reveal" data-href="award-detail.html">
+                    <div class="award-icon"><i class="fas fa-star"></i></div>
+                    <div class="award-title">Top 16 – Shine Your Voice 2023</div>
+                    <div class="award-desc">MC World · Hà Nội</div>
+                </div>
+                <div class="award-item reveal" data-href="award-detail.html">
+                    <div class="award-icon"><i class="fas fa-crown"></i></div>
+                    <div class="award-title">Giải ba toàn quốc</div>
+                    <div class="award-desc">Tìm kiếm ngôi sao dẫn chương trình – Vụt sáng vì sao</div>
+                </div>
+                <div class="award-item reveal" data-href="award-detail.html">
+                    <div class="award-icon"><i class="fas fa-medal"></i></div>
+                    <div class="award-title">Á quân 1</div>
+                    <div class="award-desc">Lễ tốt nghiệp khóa MC chuyên nghiệp · ST LightHouse</div>
+                </div>
+                <div class="award-item reveal" data-href="award-detail.html">
+                    <div class="award-icon"><i class="fas fa-medal"></i></div>
+                    <div class="award-title">Á quân 1</div>
+                    <div class="award-desc">Lễ tốt nghiệp khóa MC cơ bản · ST LightHouse</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    PARTNERS — LOGOS AT ORIGINAL SIZE
+    ============================================================ -->
+    <section id="partners" style="background:var(--bg-surface,#1e293b);">
+        <div class="container">
+            <div class="reveal">
+                <h2 class="section-title">Đối tác đồng hành</h2>
+                <p class="section-subtitle">Tự hào được hợp tác cùng</p>
+            </div>
+            <div class="partners-grid">
+                <a href="#" class="partner-chip" data-href="partner1.html">
+                    <img src="vtvmoney.jpg" alt="VTV Money">
+                </a>
+                <a href="#" class="partner-chip" data-href="partner2.html">
+                    <img src="VTC6.webp" alt="VTC6">
+                </a>
+                <a href="#" class="partner-chip" data-href="partner3.html">
+                    <img src="vietskill.jpg" alt="VietSkill">
+                </a>
+                <a href="#" class="partner-chip" data-href="partner4.html">
+                    <img src="htv5.jpg" alt="HTV5">
+                </a>
+                <a href="#" class="partner-chip" data-href="partner5.html">
+                    <img src="green_school.jpg" alt="Green School">
+                </a>
+                <a href="#" class="partner-chip" data-href="partner6.html">
+                    <img src="ajc.png" alt="AJC">
+                </a>
+                <a href="#" class="partner-chip" data-href="partner7.html">
+                    <img src="neu.PNG" alt="NEU">
+                </a>
+                <a href="#" class="partner-chip" data-href="partner8.html">
+                    <img src="ued.jpg" alt="UED">
+                </a>
+                <a href="#" class="partner-chip" data-href="partner9.html">
+                    <img src="vnu.png" alt="VNU">
+                </a>
+                <a href="#" class="partner-chip" data-href="partner10.html">
+                    <img src="hanu.jpg" alt="HAN University">
+                </a>
+                <a href="#" class="partner-chip" data-href="partner11.html">
+                    <img src="ptit.png" alt="PTIT">
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    CONTACT
+    ============================================================ -->
+    <section id="contact">
+        <div class="container">
+            <div class="reveal">
+                <h2 class="section-title">Liên hệ</h2>
+                <p class="section-subtitle">Sẵn sàng cùng bạn tạo nên một sự kiện đáng nhớ.</p>
+            </div>
+            <div class="contact-wrap">
+                <div class="contact-info reveal">
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div>
+                            <div class="ci-label">Điện thoại</div>
+                            <div class="ci-value">+84 339 468 816</div>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <div class="ci-label">Email</div>
+                            <div class="ci-value">contact.phuongthanh@gmail.com</div>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <div class="ci-label">Địa điểm thường trú</div>
+                            <div class="ci-value">Hà Nội, Việt Nam</div>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <div class="ci-label">Tình trạng nhận lịch</div>
+                            <div class="ci-value">Sẵn sàng đồng hành cùng các sự kiện và dự án hợp tác.</div>
+                        </div>
+                    </div>
+                    <div class="flex-wrap-responsive" style="gap:12px;margin-top:16px;">
+                        <a href="#" class="btn-primary">
+                            <i class="fas fa-paper-plane"></i> Đặt lịch ngay
+                        </a>
+                        <a href="https://www.facebook.com/PhuongThanh.bilingual#" class="btn-secondary">
+                            <i class="fab fa-facebook-messenger"></i> Messenger
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-form reveal">
+                    <form id="contactForm">
+                        <label for="name">Họ và tên</label>
+                        <input type="text" id="name" placeholder="Nguyễn Văn A" />
+
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="you@example.com" />
+
+                        <label for="message">Nội dung</label>
+                        <textarea id="message" placeholder="Nhập nội dung..."></textarea>
+
+                        <button type="submit" class="btn">
+                            <i class="fas fa-paper-plane"></i> Gửi email
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    FOOTER
+    ============================================================ -->
+    <footer class="footer">
+        <div class="container">
+            <p>
+                © 2026 <strong>Phương Thúy Thanh</strong> &middot; Bilingual MC &amp; TV Host
+            </p>
+            <p style="font-size:clamp(0.7rem,0.5vw+0.3rem,0.8rem);">
+                Made with <span class="heart">❤</span> &amp; <i class="fas fa-microphone-alt"></i>
+            </p>
+        </div>
+    </footer>
+
+    <!-- ========== MODAL OVERLAY ========== -->
+    <div class="modal-overlay" id="popupModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalCloseBtn">&times;</button>
+            <iframe class="modal-iframe" id="modalIframe" src="about:blank"></iframe>
+        </div>
+    </div>
+
+    <script>
+        // ==================== COPY FUNCTION ====================
+        function copyText(text) {
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(text).then(() => {
+                    console.log('Copied: ' + text);
+                }).catch(err => {
+                    console.error('Copy failed: ', err);
+                });
+            } else {
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                document.body.appendChild(textArea);
+                textArea.select();
+                try {
+                    document.execCommand('copy');
+                    console.log('Copied: ' + text);
+                } catch (err) {
+                    console.error('Copy failed: ', err);
+                }
+                document.body.removeChild(textArea);
+            }
+        }
+
+        // ==================== LANGUAGE DROPDOWN ====================
+        (function() {
+            const btn = document.getElementById('langDropdownBtn');
+            const menu = document.getElementById('langDropdownMenu');
+            const overlay = document.getElementById('langOverlay');
+            const arrow = document.getElementById('dropdownArrow');
+
+            const langMap = {
+                'vi': { flag: '🇻🇳', label: 'VI' },
+                'en': { flag: '🇬🇧', label: 'EN' },
+                'zh': { flag: '🇨🇳', label: '中文' }
+            };
+
+            let currentLang = document.documentElement.lang || 'vi';
+            const path = window.location.pathname;
+            if (path.includes('eindex.html') || path.includes('en')) currentLang = 'en';
+            else if (path.includes('cindex.html') || path.includes('zh')) currentLang = 'zh';
+            else currentLang = 'vi';
+
+            function updateButton(lang) {
+                const info = langMap[lang] || langMap['vi'];
+                document.getElementById('currentFlag').textContent = info.flag;
+                document.getElementById('currentLangLabel').textContent = info.label;
+                const links = menu.querySelectorAll('a');
+                links.forEach(link => {
+                    link.classList.remove('active-lang');
+                    const href = link.getAttribute('href');
+                    if (href && href.includes(lang)) {
+                        link.classList.add('active-lang');
+                    }
+                    if (link.dataset.lang === lang) {
+                        link.classList.add('active-lang');
+                    }
+                });
+            }
+
+            updateButton(currentLang);
+
+            function toggleDropdown(open) {
+                const isOpen = menu.classList.contains('open');
+                if (open === undefined) {
+                    menu.classList.toggle('open');
+                    overlay.classList.toggle('active');
+                    arrow.classList.toggle('open');
+                } else if (open) {
+                    menu.classList.add('open');
+                    overlay.classList.add('active');
+                    arrow.classList.add('open');
+                } else {
+                    menu.classList.remove('open');
+                    overlay.classList.remove('active');
+                    arrow.classList.remove('open');
+                }
+            }
+
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                toggleDropdown();
+            });
+
+            overlay.addEventListener('click', function() {
+                toggleDropdown(false);
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    toggleDropdown(false);
+                }
+            });
+
+            menu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    let lang = 'vi';
+                    if (href.includes('eindex')) lang = 'en';
+                    else if (href.includes('cindex')) lang = 'zh';
+                    else lang = 'vi';
+                    updateButton(lang);
+                });
+            });
+
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    toggleDropdown(false);
+                }
+            });
+        })();
+
+        // ==================== SCROLL REVEAL (ONCE) ====================
+        (function() {
+            const revealElements = document.querySelectorAll('.reveal');
+            const options = { root: null, rootMargin: '0px 0px -40px 0px', threshold: 0.1 };
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const el = entry.target;
+                    if (entry.isIntersecting) {
+                        el.classList.add('visible');
+                        observer.unobserve(el);
+                    }
+                });
+            }, options);
+
+            revealElements.forEach(el => observer.observe(el));
+
+            setTimeout(() => {
+                revealElements.forEach(el => {
+                    const rect = el.getBoundingClientRect();
+                    const winHeight = window.innerHeight || document.documentElement.clientHeight;
+                    if (rect.top < winHeight - 60 && rect.bottom > 0) {
+                        el.classList.add('visible');
+                        observer.unobserve(el);
+                    }
+                });
+            }, 100);
+        })();
+
+        // ==================== NAV HIGHLIGHT ====================
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-links a');
+
+        function highlightNav() {
+            let current = '';
+            sections.forEach(section => {
+                const top = section.offsetTop - 120;
+                if (window.scrollY >= top) {
+                    current = section.getAttribute('id');
+                }
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        }
+        window.addEventListener('scroll', highlightNav);
+        highlightNav();
+
+        // ==================== CONTACT FORM ====================
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('contactForm');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const name = document.getElementById('name').value.trim();
+                    const email = document.getElementById('email').value.trim();
+                    const message = document.getElementById('message').value.trim();
+                    if (!name || !email || !message) {
+                        alert('Vui lòng điền đầy đủ thông tin.');
+                        return;
+                    }
+                    const subject = encodeURIComponent('Liên hệ từ ' + name);
+                    const body = encodeURIComponent(
+                        'Họ tên: ' + name + '\nEmail: ' + email + '\n\nNội dung:\n' + message
+                    );
+                    window.location.href = 'mailto:contact.phuongthanh@gmail.com?subject=' + subject + '&body=' +
+                        body;
+                });
+            }
+        });
+
+        // ==================== HAMBURGER MENU ====================
+        (function() {
+            const hamburger = document.getElementById('hamburgerBtn');
+            const wrapper = document.getElementById('navLinksWrapper');
+
+            if (hamburger && wrapper) {
+                hamburger.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const isOpen = wrapper.classList.toggle('open');
+                    hamburger.classList.toggle('active');
+                    hamburger.setAttribute('aria-expanded', isOpen);
+                });
+
+                wrapper.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', function() {
+                        wrapper.classList.remove('open');
+                        hamburger.classList.remove('active');
+                        hamburger.setAttribute('aria-expanded', 'false');
+                    });
+                });
+
+                document.addEventListener('click', function(e) {
+                    const nav = document.querySelector('.navbar-custom .container');
+                    if (nav && !nav.contains(e.target)) {
+                        wrapper.classList.remove('open');
+                        hamburger.classList.remove('active');
+                        hamburger.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            }
+        })();
+
+        // ==================== NAVBAR SCROLL EFFECT ====================
+        (function() {
+            const navbar = document.getElementById('navbar');
+            let lastScroll = 0;
+            window.addEventListener('scroll', function() {
+                const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+                if (currentScroll > 40) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+                lastScroll = currentScroll;
+            });
+        })();
+
+        // ==================== POPUP MODAL ====================
+        (function() {
+            const modal = document.getElementById('popupModal');
+            const iframe = document.getElementById('modalIframe');
+            const closeBtn = document.getElementById('modalCloseBtn');
+
+            function openModal(url) {
+                if (!url || url === '#') return;
+                iframe.src = url;
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeModal() {
+                modal.classList.remove('active');
+                setTimeout(() => {
+                    iframe.src = 'about:blank';
+                }, 300);
+                document.body.style.overflow = '';
+            }
+
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+
+            closeBtn.addEventListener('click', closeModal);
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal.classList.contains('active')) {
+                    closeModal();
+                }
+            });
+
+            // Attach click listeners to all eligible elements
+            const selectors = [
+                '.partner-chip',
+                '.glass-card',
+                '.event-card',
+                '.award-item'
+            ];
+            const elements = document.querySelectorAll(selectors.join(','));
+            elements.forEach(el => {
+                el.addEventListener('click', function(e) {
+                    // If the element is an anchor, prevent default navigation
+                    if (this.tagName === 'A') {
+                        e.preventDefault();
+                    }
+                    const url = this.getAttribute('data-href');
+                    if (url && url !== '#') {
+                        openModal(url);
+                    } else {
+                        console.warn('No data-href set for', this);
+                    }
+                });
+            });
+        })();
+    </script>
+
+</body>
+</html>

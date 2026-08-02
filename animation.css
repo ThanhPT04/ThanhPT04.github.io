@@ -523,5 +523,266 @@
 }
 
 /* ==========================================================================
+   11. SCROLL REVEAL ANIMATIONS
+   ========================================================================== */
+
+/* Base state — hidden initially */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Visible state — triggered by JS Intersection Observer */
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Optional: re-hide when scrolling back up */
+.reveal.hide-up {
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+/* Staggered delay variants for children */
+.reveal .delay-1 { transition-delay: 0.1s; }
+.reveal .delay-2 { transition-delay: 0.2s; }
+.reveal .delay-3 { transition-delay: 0.3s; }
+.reveal .delay-4 { transition-delay: 0.4s; }
+.reveal .delay-5 { transition-delay: 0.5s; }
+
+/* ==========================================================================
+   12. TRANSITION UTILITIES
+   ========================================================================== */
+
+.transition {
+    transition: var(--transition) !important;
+}
+
+.transition-bounce {
+    transition: var(--transition-bounce) !important;
+}
+
+.transition-fast {
+    transition: all 0.15s ease !important;
+}
+
+.transition-slow {
+    transition: all 0.6s ease !important;
+}
+
+/* Hover trigger — apply to parent to animate children on hover */
+.hover-transition:hover {
+    transition: var(--transition-bounce);
+}
+
+/* Scale on hover */
+.hover-scale:hover {
+    transform: scale(1.02);
+}
+
+/* Glow on hover */
+.hover-glow:hover {
+    box-shadow: 0 0 30px rgba(255, 107, 107, 0.15);
+}
+
+/* ==========================================================================
+   13. GLASS CARD ANIMATIONS
+   ========================================================================== */
+
+.glass-card {
+    background: var(--glass-bg, rgba(15, 23, 42, 0.6));
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.08));
+    border-radius: var(--radius-lg, 16px);
+    padding: 24px;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 0.3s ease,
+                border-color 0.3s ease;
+}
+
+.glass-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--primary, #ff6b6b);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.3);
+}
+
+/* Card entrance animation */
+.glass-card.animate-in {
+    animation: glassCardIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes glassCardIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.97);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* ==========================================================================
+   14. CARD HOVER ANIMATIONS
+   ========================================================================== */
+
+/* Event Card */
+.event-card {
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 0.3s ease,
+                border-color 0.3s ease;
+}
+
+.event-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--primary, #ff6b6b);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.25);
+}
+
+/* Award Item */
+.award-item {
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 0.3s ease,
+                background 0.3s ease;
+}
+
+.award-item:hover {
+    transform: translateY(-4px) scale(1.02);
+    background: var(--bg-hover, rgba(255, 107, 107, 0.05));
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+/* Partner Chip */
+.partner-chip {
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+                background 0.3s ease,
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+.partner-chip:hover {
+    transform: translateY(-3px) scale(1.04);
+    background: var(--primary-light, rgba(255, 107, 107, 0.1));
+    border-color: var(--primary, #ff6b6b);
+    box-shadow: 0 8px 24px rgba(255, 107, 107, 0.15);
+}
+
+/* ==========================================================================
+   15. FORM ANIMATIONS
+   ========================================================================== */
+
+.form-input {
+    transition: border-color 0.3s ease,
+                box-shadow 0.3s ease,
+                background 0.3s ease;
+}
+
+.form-input:focus {
+    border-color: var(--primary, #ff6b6b);
+    box-shadow: 0 0 0 4px rgba(255, 107, 107, 0.15);
+    outline: none;
+}
+
+.btn-primary {
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+                background 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(255, 107, 107, 0.3);
+}
+
+.btn-primary:active {
+    transform: scale(0.96);
+}
+
+.btn-secondary {
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+                background 0.3s ease,
+                border-color 0.3s ease;
+}
+
+.btn-secondary:hover {
+    transform: translateY(-2px);
+    background: var(--bg-hover, rgba(255, 255, 255, 0.05));
+    border-color: var(--primary, #ff6b6b);
+}
+
+/* ==========================================================================
+   16. NAVBAR & DROPDOWN ANIMATIONS
+   ========================================================================== */
+
+.navbar-custom {
+    transition: background 0.3s ease,
+                box-shadow 0.3s ease,
+                backdrop-filter 0.3s ease;
+}
+
+/* Sticky/scrolled state */
+.navbar-custom.scrolled {
+    background: rgba(10, 14, 23, 0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Language dropdown */
+.lang-dropdown-menu {
+    transition: opacity 0.25s ease,
+                transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+                visibility 0.25s ease;
+    opacity: 0;
+    transform: translateY(-12px) scale(0.97);
+    visibility: hidden;
+    transform-origin: top center;
+}
+
+.lang-dropdown-menu.open {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    visibility: visible;
+}
+
+.lang-dropdown-btn .dropdown-arrow {
+    transition: transform 0.3s ease;
+}
+
+.lang-dropdown-btn .dropdown-arrow.open {
+    transform: rotate(180deg);
+}
+
+/* Language menu items hover */
+.lang-dropdown-menu a {
+    transition: background 0.2s ease,
+                padding-left 0.2s ease,
+                color 0.2s ease;
+}
+
+.lang-dropdown-menu a:hover {
+    background: var(--bg-hover, rgba(255, 255, 255, 0.04));
+    padding-left: 20px;
+}
+
+/* ==========================================================================
+   POPUP MODAL ANIMATION
+   ========================================================================== */
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* ==========================================================================
    END OF ANIMATION CSS FRAMEWORK
    ========================================================================== */
